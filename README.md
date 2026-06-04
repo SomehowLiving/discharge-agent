@@ -60,6 +60,16 @@ The output is structurally incapable of looking complete when it isn't: flags ap
 
 ---
 
+## Data Privacy and Retention
+
+This submission is intended only for the synthetic patient data provided with the assignment. Do not run it on real patient data.
+
+In one-shot mode, the PDF is temporarily uploaded to the Gemini Files API so Gemini can read the document in context. The agent deletes that uploaded file in a `finally` block after processing completes or fails. In loop mode, embedded text is extracted locally first; sparse pages are rendered to images and sent to Gemini Vision only for OCR fallback.
+
+For production use, I would require a provider data-retention review and likely replace this with a private deployment path: local OCR, a self-hosted model, or a vendor configuration with a signed healthcare data-processing agreement.
+
+---
+
 ## Failure and Conflict Handling
 
 **API failures:** `_call_with_retry` retries up to 3 times with exponential backoff (2s, 4s, 8s) for rate-limit errors (HTTP 429). Other errors are retried twice, then a `critical` system flag is added and the agent exits gracefully with whatever data it has — it never crashes or returns a silent partial result.

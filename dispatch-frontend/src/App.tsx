@@ -20,6 +20,9 @@ export default function App() {
       <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center space-x-4">
           <h1 className="text-xl font-semibold tracking-tight text-slate-800">Discharge Summary Agent</h1>
+          <span className="bg-red-100 text-red-800 text-xs font-bold px-2.5 py-1 rounded border border-red-200 uppercase tracking-wide">
+            DRAFT - Not a clinical document
+          </span>
         </div>
         {!currentJob && (
           <div className="flex gap-1 bg-slate-100 p-1 rounded-lg">

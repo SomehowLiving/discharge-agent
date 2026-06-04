@@ -69,19 +69,28 @@ discharge-summary-agent/
 │   ├── prompts.py               # System prompt + user prompt templates
 │   └── output_formatter.py     # Renders Markdown, JSON, and trace files
 │
-├── frontend/
+├── dispatch-frontend/
 │   ├── package.json
 │   ├── vite.config.ts
 │   └── src/
-│       ├── App.tsx              # Root component — routes between two views
+│       ├── App.tsx              # Root component — Part 1 / Part 2 tabs
 │       ├── api.ts               # Typed HTTP client for the backend
 │       ├── types.ts             # TypeScript interfaces mirroring backend models
 │       └── components/
 │           ├── UploadAndJobsView.tsx   # Upload UI, job table, polling logic
+│           ├── Part2View.tsx           # Learning-loop metrics, curve, and diffs
 │           ├── SummaryView.tsx         # Summary layout (flags + sections + trace)
 │           ├── SummarySections.tsx     # Individual summary cards
 │           ├── FlagsPanel.tsx          # Color-coded flag sidebar
 │           └── TraceTimeline.tsx       # Collapsible agent step debugger
+│
+├── part2/
+│   ├── doctor.py                # Deterministic simulated reviewer
+│   ├── memory.py                # Correction-memory rules
+│   ├── metrics.py               # Edit-distance reward metrics
+│   ├── runner.py                # Part 2 learning-loop runner
+│   ├── synthetic_patients/      # Synthetic note text for feedback simulation
+│   └── results/                 # Draft/edit pairs, metrics, and learning curve
 │
 ├── data/
 │   └── <patient_id>/            # Uploaded PDFs (auto-created per job)

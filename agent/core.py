@@ -88,12 +88,13 @@ class DischargeAgent:
             ])
         ]
 
-        self._run_content_loop(contents, config, patient_dir=None)
-
         try:
-            self.client.files.delete(name=uploaded.name)
-        except Exception:
-            pass
+            self._run_content_loop(contents, config, patient_dir=None)
+        finally:
+            try:
+                self.client.files.delete(name=uploaded.name)
+            except Exception:
+                pass
 
     # ------------------------------------------------------------------
     # Mode 2: Agent loop
