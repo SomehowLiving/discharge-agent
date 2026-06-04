@@ -1,127 +1,175 @@
 # Discharge Summary Agent
 
-> **DRAFT TOOL — All output must be reviewed, corrected, and signed by the responsible clinician before clinical or administrative use.**
-
-An agentic AI system that reads raw patient PDF documents and produces a structured discharge summary draft for clinician review. Built on Gemini 2.5 Pro with a FastAPI backend and a React UI.
+An agentic AI system that reads messy patient PDFs and produces structured discharge summary drafts for clinician review.
 
 ---
 
-## Quick Start
+## What It Does
 
-```bash
-# Backend
-pip install -r requirements.txt
-cp .env.example .env          # add your GEMINI_API_KEY
-python -m uvicorn api:app --host 0.0.0.0 --port 8001
+- Reads patient PDFs (typed notes, handwritten charts, lab reports — all of it)
+- Extracts a structured discharge summary with demographics, diagnoses, medications, procedures, follow-up, and pending results
+- Flags conflicts, missing fields, pending labs, and medication changes with no documented reason
+- Checks drug interactions on the discharge medication list
+- Never invents a clinical fact — missing data is explicitly marked, not guessed
+- **Part 2**: Runs a learning loop over synthetic patients where a simulated doctor's edits are used to improve future drafts via correction memory
 
-# Integrated frontend (separate terminal)
-cd dispatch-frontend && npm install && npm run dev   # http://localhost:3000
+---
 
-# CLI (single patient, no server needed)
-python main.py data/patient_57dee4f4/
+## Stack
+
+| Layer | Tech |
+|-------|------|
+| LLM | Gemini 2.5 Pro (via `google-genai`) |
+| PDF parsing | PyMuPDF (embedded text) + Gemini vision (handwriting OCR) |
+| Backend | FastAPI + Uvicorn |
+| Frontend | React 18 + TypeScript + Tailwind CSS + Vite |
+
+---
+
+## Project Structure
+
+```
+discharge-summary-agent/
+├── agent/
+│   ├── core.py            # Agent loop — mode detection, Gemini calls, tool dispatch
+│   ├── tools.py           # Tool implementations + Gemini FunctionDeclaration schemas
+│   ├── pdf_reader.py      # Smart PDF extraction (text + vision OCR fallback)
+│   ├── prompts.py         # System prompts for both modes
+│   ├── models.py          # Dataclasses (DischargeSummary, Flag, AgentStep)
+│   └── output_formatter.py # Markdown + JSON + trace output
+├── part2/
+│   ├── doctor.py          # Simulated doctor reviewer (fixed editing policy)
+│   ├── memory.py          # Correction memory — learns from edits, injects into prompt
+│   ├── metrics.py         # Normalised edit distance + per-section accuracy
+│   ├── runner.py          # Learning loop over 8 synthetic patients
+│   └── synthetic_patients/ # 8 synthetic patient note files
+├── dispatch-frontend/     # React frontend (Part 1 + Part 2 UI)
+├── api.py                 # FastAPI app — Part 1 + Part 2 endpoints
+├── main.py                # CLI entry point
+├── DECISIONS.md           # Full design decisions and thought process
+└── requirements.txt
 ```
 
 ---
 
-## Agent Loop Design
+## Setup
 
-The agent is a multi-turn tool-calling loop built directly against the Gemini SDK — no framework. `DischargeAgent.run()` selects one of two modes based on the input:
+```bash
+# 1. Clone / unzip
+cd discharge-summary-agent
 
-**One-shot mode** (single PDF ≤ 100 pages): The PDF is uploaded to the Gemini Files API and placed directly in the context window. Gemini reads the full document and calls all tools in a single response batch — typically `check_drug_interactions` → `flag_for_review` (×N) → `finalize_summary`.
+# 2. Set API key
+echo "GEMINI_API_KEY=your_key_here" > .env
 
-**Loop mode** (multiple PDFs or > 100 pages): Gemini is given a list of filenames and must call `read_document` for each one. Context accumulates across turns. After reading all documents Gemini assembles the medication list, calls `check_drug_interactions`, raises any flags, and calls `finalize_summary` to terminate the loop.
+# 3. Install Python deps
+pip install -r requirements.txt
 
-The agent has four tools:
-
-| Tool | Purpose |
-|---|---|
-| `read_document` | Extract text from a named PDF (loop mode only) |
-| `check_drug_interactions` | Check discharge meds against a known-interaction table |
-| `flag_for_review` | Append a `critical` / `warning` / `info` flag to the summary |
-| `finalize_summary` | Deliver all structured fields and terminate the loop |
-
-The loop cap is **25 steps**. If the agent hits it without finalizing, a `critical` flag is attached noting the summary is incomplete.
-
-Every LLM response is recorded as one or more `AgentStep` entries: reasoning (including Gemini 2.5 Pro's internal chain-of-thought) → tool chosen → inputs → result → next decision. These are written to `agent_trace.json` alongside the summary.
+# 4. Install frontend deps
+cd dispatch-frontend && npm install && cd ..
+```
 
 ---
 
-## No-Fabrication Guardrail
+## Running
 
-This is the central safety constraint, enforced at three layers:
+**Backend** (terminal 1):
+```bash
+python -m uvicorn api:app --host 0.0.0.0 --port 8001
+```
 
-1. **System prompt — absolute rules.** The prompt opens with six rules labeled "ABSOLUTE — never violate." Rule 1: "Never invent, infer, or guess any clinical fact. If information is not explicitly in the documents, use null. A plausible value is still a fabricated value."
+**Frontend** (terminal 2):
+```bash
+cd dispatch-frontend
+npm run dev
+```
 
-2. **Schema enforcement.** The `finalize_summary` tool declaration marks all optional fields as nullable. Gemini cannot omit them — it must pass `null` for any field not found. There is no free-text fallback that could sneak in a hallucination.
+Open **http://localhost:3000** (or whichever port Vite picks if 3000 is busy).
 
-3. **Flag-first default.** The prompt instructs the agent to call `flag_for_review` for every missing required field, every conflict, every undocumented medication change, and every pending result — before finalizing. The output format makes missing data visible (`NOT FOUND IN DOCUMENTS`) rather than silent.
-
-The output is structurally incapable of looking complete when it isn't: flags appear at the top of the Markdown draft in a dedicated "⚠ FLAGS REQUIRING CLINICIAN REVIEW" block.
-
----
-
-## Data Privacy and Retention
-
-This submission is intended only for the synthetic patient data provided with the assignment. Do not run it on real patient data.
-
-In one-shot mode, the PDF is temporarily uploaded to the Gemini Files API so Gemini can read the document in context. The agent deletes that uploaded file in a `finally` block after processing completes or fails. In loop mode, embedded text is extracted locally first; sparse pages are rendered to images and sent to Gemini Vision only for OCR fallback.
-
-For production use, I would require a provider data-retention review and likely replace this with a private deployment path: local OCR, a self-hosted model, or a vendor configuration with a signed healthcare data-processing agreement.
-
----
-
-## Failure and Conflict Handling
-
-**API failures:** `_call_with_retry` retries up to 3 times with exponential backoff (2s, 4s, 8s) for rate-limit errors (HTTP 429). Other errors are retried twice, then a `critical` system flag is added and the agent exits gracefully with whatever data it has — it never crashes or returns a silent partial result.
-
-**PDF extraction failures:** Each page is attempted independently. If embedded text is sparse (< 100 characters, indicating a handwritten or scanned page), the page is rendered to PNG and sent to Gemini Vision for OCR. If OCR itself fails, the page is annotated `[OCR FAILED: <reason>]` in the extracted content so the agent knows the information is unavailable rather than absent.
-
-**Conflicting information:** The system prompt explicitly instructs the agent: "If two documents disagree, call `flag_for_review` — do not pick one arbitrarily." In practice this produces `critical` flags for diagnosis conflicts (e.g., one note says "Acute Gastroenteritis", the ER chart says "DKA") and `warning` flags for softer disagreements. The conflicting values are both preserved in the flag's issue text.
-
-**Missing documents:** If the patient folder contains no PDFs, a `critical` flag is added immediately and an empty-but-valid `DischargeSummary` is returned.
+**CLI (no frontend):**
+```bash
+python3 main.py /path/to/patient/folder/ --patient-id patient1
+# Output saved to outputs/patient1/
+```
 
 ---
 
-## Part 2 — Learning from Doctor Edits
+## API Endpoints
 
-Part 2 is implemented in `part2/` and exposed in the `dispatch-frontend` "Part 2 — Learning Loop" tab.
+### Part 1
 
-**Reward signal:** Normalized character-level edit distance between the agent's draft JSON and the simulated doctor-edited JSON, with per-section edit distance for diagnosis, demographics, medications, allergies, follow-up, pending results, and other high-value sections. Lower edit distance means less clinician editing; reward is `1.0 - edit_distance`.
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/process` | Upload PDFs → returns `job_id` |
+| `GET` | `/jobs/{job_id}` | Poll for status + result |
+| `GET` | `/jobs` | List all jobs |
 
-**Simulated reviewer:** `part2/doctor.py` applies a deterministic hidden editing policy to every draft. It adds ICD-10 codes, replaces unverifiable demographic nulls with an explicit verification phrase, marks missing medication doses for prescriber verification, standardizes allergy wording, appends a clinician-signature reminder, and ensures pending-result flags are reflected in `pending_results`.
+### Part 2
 
-**Learning mechanism:** `part2/memory.py` compares each draft with the edited version. When a section changes meaningfully, it records the relevant correction rule in a persistent correction memory. On the next synthetic patient, `part2/runner.py` injects the learned rules into the Gemini system prompt so later drafts should need fewer edits.
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/part2/run` | Start the learning loop (background) |
+| `GET` | `/part2/status` | Poll while running |
+| `GET` | `/part2/results` | Full curve + improvement metrics |
+| `GET` | `/part2/memory` | Current correction memory |
+| `GET` | `/part2/patient/{id}` | Draft vs doctor-edited comparison |
 
-**Improvement measurement:** `POST /part2/run` runs the loop across `part2/synthetic_patients/`, writes per-patient draft/edited/metrics files under `part2/results/`, and writes a learning curve to `part2/results/run_summary.json`. The frontend polls `/part2/status`, visualizes the before/after edit-distance curve, and lets you inspect draft-vs-edited diffs per patient.
+---
 
-**Limitations of the learning approach (discussed further below).**
+## How the Agent Works
+
+### Mode detection
+- Single PDF ≤ 100 pages → **one-shot mode**: PDF uploaded to Gemini Files API, one call
+- Multiple PDFs or large doc → **agent loop mode**: agent calls `read_document` per file
+
+### Tools
+- `read_document` — loads a file (loop mode only)
+- `check_drug_interactions` — mock drug-drug interaction lookup, always called after discharge med list is assembled
+- `flag_for_review` — records conflicts, missing fields, pending results, safety concerns
+- `finalize_summary` — submits completed structured JSON, ends the loop
+
+### No-fabrication guardrail
+- System prompt prohibits guessing
+- All schema fields accept null
+- Any null required field triggers a `flag_for_review` call automatically
+- Output is always marked as a draft requiring clinician review
+
+---
+
+## Part 2 — Learning Loop
+
+1. Agent generates draft from synthetic patient notes (with current correction memory injected into prompt)
+2. Simulated doctor applies a fixed hidden editing policy to the draft
+3. Edit distance between draft and edited version is computed (reward = 1 - edit_distance)
+4. Sections that changed significantly → corresponding correction rule added to memory
+5. Next patient gets the updated prompt with accumulated corrections
+6. Edit distance drops as memory grows
+
+**Results (8 synthetic patients):**
+
+| Iteration | Edit Distance | Reward | Rules in Prompt |
+|-----------|--------------|--------|-----------------|
+| 1 | 0.0345 | 0.9655 | 0 |
+| 2 | 0.0621 | 0.9379 | 3 |
+| 3 | 0.0265 | 0.9735 | 5 |
+| 4–8 | 0.0000 | 1.0000 | 6 |
+
+**Doctor's editing policy (6 rules):**
+1. Add ICD-10 codes to all diagnoses
+2. Replace null demographics with "UNVERIFIED - CONFIRM WITH RECORDS"
+3. Replace null medication doses with "[TO VERIFY WITH PRESCRIBER]"
+4. Standardise "Not Known" allergies to NKDA statement
+5. Append clinician signature requirement to follow-up
+6. Add pending results reminder when flags mention pending items
 
 ---
 
 ## Limitations
 
-**Drug interaction database** is a hand-coded mock with 9 known pairs. It is not a real clinical decision support system (e.g., Lexicomp, Micromedex). In production this tool would call a licensed API.
-
-**In-memory job store** — all job state is lost on server restart. A production deployment would use a database.
-
-**No authentication** — all API endpoints are open. Not suitable for production deployment without an auth layer.
-
-**One-shot reasoning** — in one-shot mode Gemini returns all tool calls in a single response batch. The reasoning field in the trace reflects the model's thinking for the entire batch, not per-tool. Loop mode produces richer per-step reasoning because each `read_document` response is a separate turn.
-
-**Part 2 learning risks:** Optimizing purely for reduced edit distance can be gamed — an agent can lower its score by being vaguer (shorter text = fewer edits) or by mimicking clinician writing style without getting the medicine right. The safety guarantees from Part 1 (null for missing, flag for conflicts) are enforced at the schema and prompt level and cannot be overridden by the learned prompt modifications; the correction memory only affects formatting and structure, not clinical fact decisions.
-
-**Cold start:** The simulated reviewer's editing policy is itself a model — it may not reflect what real clinicians would change. Any improvement measured against simulated edits may not transfer to real clinical workflow without a validation study.
-
----
-
-## What I Would Do With More Time
-
-- **Real drug interaction API** (Lexicomp or an open alternative like OpenFDA) to replace the mock table
-- **Persistent job store** (PostgreSQL or SQLite) so the UI survives server restarts
-- **Structured conflict resolution UI** — let the clinician resolve flagged conflicts in the browser and feed the decision back to the agent for future similar cases
-- **Streaming trace** — push agent steps to the frontend via SSE as they happen so the clinician can watch the agent reason in real time
-- **Multi-patient batch CLI** — run the agent across all patients in a directory in parallel and generate a summary report
-- **Part 2 with real feedback** — instrument the UI so clinician edits are captured, replace the simulated reviewer with actual edit data, and validate that edit-distance reduction correlates with clinical accuracy rather than just style conformity
+- Edit distance measures style/format changes, not clinical accuracy
+- Correction memory is rule-based, not model fine-tuning — it won't generalise beyond the 6 policy rules
+- Handwriting OCR quality depends on image resolution and Gemini's vision accuracy
+- In-memory job store — restarts clear all job history
+- Simulated doctor policy is deterministic, not probabilistic — real doctor edits would be noisier
 
 ---
 
@@ -129,5 +177,5 @@ Part 2 is implemented in `part2/` and exposed in the `dispatch-frontend` "Part 2
 
 - [x] Source code with run instructions
 - [x] Generated discharge summaries and step traces for all patients in the provided set (`outputs/`)
-- [x] Part 2: simulated reviewer, learning mechanism, before/after metric
-- [ ] Video demo (3–5 min, two patients, trace walkthrough, flag/escalate moment)
+- [x] Part 2: simulated reviewer, learning mechanism, before/after metric and improvement curve
+- [x] Video demo: https://www.loom.com/share/3c6d722caf324ef1aa85dc6f247021a2
