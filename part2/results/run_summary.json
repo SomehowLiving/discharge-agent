@@ -1,13 +1,153 @@
 {
-  "run_at": "2026-06-04T03:05:22.789444",
-  "total_patients": 0,
-  "curve": [],
-  "before": null,
-  "after": null,
-  "improvement": 0,
+  "run_at": "2026-06-04T13:21:02.412573",
+  "total_patients": 8,
+  "curve": [
+    {
+      "iteration": 1,
+      "patient_id": "patient_001",
+      "edit_distance": 0.0339,
+      "reward": 0.9661,
+      "rules_in_prompt": 0,
+      "rules_learned_after": 3
+    },
+    {
+      "iteration": 2,
+      "patient_id": "patient_002",
+      "edit_distance": 0.062,
+      "reward": 0.938,
+      "rules_in_prompt": 3,
+      "rules_learned_after": 5
+    },
+    {
+      "iteration": 3,
+      "patient_id": "patient_003",
+      "edit_distance": 0.0131,
+      "reward": 0.9869,
+      "rules_in_prompt": 5,
+      "rules_learned_after": 5
+    },
+    {
+      "iteration": 4,
+      "patient_id": "patient_004",
+      "edit_distance": 0.0,
+      "reward": 1.0,
+      "rules_in_prompt": 5,
+      "rules_learned_after": 5
+    },
+    {
+      "iteration": 5,
+      "patient_id": "patient_005",
+      "edit_distance": 0.0,
+      "reward": 1.0,
+      "rules_in_prompt": 5,
+      "rules_learned_after": 5
+    },
+    {
+      "iteration": 6,
+      "patient_id": "patient_006",
+      "edit_distance": 0.0,
+      "reward": 1.0,
+      "rules_in_prompt": 5,
+      "rules_learned_after": 5
+    },
+    {
+      "iteration": 7,
+      "patient_id": "patient_007",
+      "edit_distance": 0.0,
+      "reward": 1.0,
+      "rules_in_prompt": 5,
+      "rules_learned_after": 5
+    },
+    {
+      "iteration": 8,
+      "patient_id": "patient_008",
+      "edit_distance": 0.0,
+      "reward": 1.0,
+      "rules_in_prompt": 5,
+      "rules_learned_after": 5
+    }
+  ],
+  "before": 0.0339,
+  "after": 0.0,
+  "improvement": 1.0,
   "memory": {
-    "learned_rules": [],
-    "history": [],
-    "total_rules_learned": 0
+    "learned_rules": [
+      {
+        "trigger": "principal_diagnosis",
+        "pattern": "diagnosis lacks ICD-10 code",
+        "instruction": "Always append the ICD-10 code in parentheses to every diagnosis. Example: 'Pneumonia (ICD-10: J18.9)'."
+      },
+      {
+        "trigger": "secondary_diagnoses",
+        "pattern": "secondary diagnoses lack ICD-10 codes",
+        "instruction": "Always append ICD-10 codes to all secondary diagnoses as well."
+      },
+      {
+        "trigger": "follow_up",
+        "pattern": "missing clinician signature note",
+        "instruction": "Always end the follow_up section with: 'Clinician signature required before discharge.'"
+      },
+      {
+        "trigger": "demographics",
+        "pattern": "null demographic fields left as null",
+        "instruction": "For any demographic field (name, age, sex, MRN, attending) that cannot be found in the documents, write 'UNVERIFIED - CONFIRM WITH RECORDS' instead of null."
+      },
+      {
+        "trigger": "allergies",
+        "pattern": "allergy listed as Not Known",
+        "instruction": "Never write 'Not Known' for allergies. Use 'No Known Drug Allergies (NKDA) - Verify with patient' instead."
+      }
+    ],
+    "history": [
+      {
+        "patient_id": "patient_001",
+        "iteration": 1,
+        "overall_edit_distance": 0.0339,
+        "rules_learned_so_far": 3
+      },
+      {
+        "patient_id": "patient_002",
+        "iteration": 2,
+        "overall_edit_distance": 0.062,
+        "rules_learned_so_far": 5
+      },
+      {
+        "patient_id": "patient_003",
+        "iteration": 3,
+        "overall_edit_distance": 0.0131,
+        "rules_learned_so_far": 5
+      },
+      {
+        "patient_id": "patient_004",
+        "iteration": 4,
+        "overall_edit_distance": 0.0,
+        "rules_learned_so_far": 5
+      },
+      {
+        "patient_id": "patient_005",
+        "iteration": 5,
+        "overall_edit_distance": 0.0,
+        "rules_learned_so_far": 5
+      },
+      {
+        "patient_id": "patient_006",
+        "iteration": 6,
+        "overall_edit_distance": 0.0,
+        "rules_learned_so_far": 5
+      },
+      {
+        "patient_id": "patient_007",
+        "iteration": 7,
+        "overall_edit_distance": 0.0,
+        "rules_learned_so_far": 5
+      },
+      {
+        "patient_id": "patient_008",
+        "iteration": 8,
+        "overall_edit_distance": 0.0,
+        "rules_learned_so_far": 5
+      }
+    ],
+    "total_rules_learned": 5
   }
 }

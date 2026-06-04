@@ -1,0 +1,80 @@
+{
+  "patient_id": "patient_006",
+  "demographics": {
+    "name": "Arjun Mehta",
+    "age": "8 years",
+    "sex": "male",
+    "mrn": "600112",
+    "attending_physician": "Dr. Leena D'Souza"
+  },
+  "admission_date": "28/03/2026",
+  "discharge_date": null,
+  "principal_diagnosis": "Febrile Seizure (ICD-10: R56.00)",
+  "secondary_diagnoses": [
+    "Right Acute Otitis Media (ICD-10: H66.91)",
+    "Lymphocytosis (ICD-10: D72.810)"
+  ],
+  "hospital_course": "Patient was admitted for observation following a first-time febrile seizure. He was managed with Paracetamol and tepid sponging for fever control. IV Amoxicillin-Clavulanate was initiated for right acute otitis media. Seizure prophylaxis was not started as it was a first, short-duration febrile seizure with normal EEG and CT head scans. Fever resolved by day 2 of admission. The patient was stepped down to oral antibiotics on day 2 and was tolerating oral intake well. Blood culture showed no growth at 48 hours.",
+  "procedures": [
+    "EEG",
+    "CT Head"
+  ],
+  "admission_medications": [],
+  "discharge_medications": [
+    {
+      "medication": "Amoxicillin-Clavulanate suspension",
+      "dose": "228mg/5ml \u2014 7ml",
+      "frequency": "BD",
+      "duration": "7 days"
+    },
+    {
+      "medication": "Paracetamol syrup",
+      "dose": "250mg/5ml \u2014 10ml",
+      "frequency": "TDS SOS for fever",
+      "duration": null
+    },
+    {
+      "medication": "Ibuprofen syrup",
+      "dose": "100mg/5ml \u2014 8ml",
+      "frequency": "TDS SOS (alternate with paracetamol)",
+      "duration": null
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Amoxicillin-Clavulanate",
+      "change": "Started",
+      "reason": "Right Acute Otitis Media"
+    },
+    {
+      "medication": "Paracetamol",
+      "change": "Started",
+      "reason": "Fever control"
+    },
+    {
+      "medication": "Ibuprofen",
+      "change": "Started",
+      "reason": "Fever control"
+    }
+  ],
+  "allergies": [
+    "No Known Drug Allergies (NKDA) - Verify with patient"
+  ],
+  "follow_up": "Follow up with Paediatrics OPD in 1 week. Schedule ENT review in 2 weeks for otitis media resolution. Repeat EEG if further seizures occur. Parents have been counselled on febrile seizure management at home. Clinician signature required before discharge.",
+  "pending_results": [
+    "Final 5-day blood culture report"
+  ],
+  "discharge_condition": "Afebrile, active, tolerating orally.",
+  "flags": [
+    {
+      "section": "demographics",
+      "issue": "Patient age is listed as '8M' in the admission note header but as '8-year-old' in the history. Age of '8 years' was used based on medication dosages, but this should be verified.",
+      "severity": "warning"
+    },
+    {
+      "section": "discharge_date",
+      "issue": "Discharge date is not specified in the clinical notes.",
+      "severity": "info"
+    }
+  ]
+}

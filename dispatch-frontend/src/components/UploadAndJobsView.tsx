@@ -88,6 +88,7 @@ export function UploadAndJobsView({ onViewSummary }: UploadAndJobsViewProps) {
   const startProcessing = async () => {
     if (files.length === 0) return;
     try {
+      setError(null);
       const job = await submitFiles(files, patientId);
       setActiveJob(job);
       setFiles([]);
@@ -95,7 +96,7 @@ export function UploadAndJobsView({ onViewSummary }: UploadAndJobsViewProps) {
       refreshJobs();
     } catch (err) {
       console.error(err);
-      setError("Failed to submit files for processing.");
+      setError(err instanceof Error ? err.message : "Failed to submit files for processing.");
     }
   };
 
@@ -180,6 +181,21 @@ export function UploadAndJobsView({ onViewSummary }: UploadAndJobsViewProps) {
         </div>
       )}
 
+      {activeJob && activeJob.status === "error" && (
+        <div className="bg-red-50 border border-red-200 p-6 rounded-xl">
+          <div className="flex items-start space-x-4">
+            <AlertCircle className="h-6 w-6 text-red-600 shrink-0 mt-0.5" />
+            <div>
+              <h3 className="text-sm font-semibold text-red-900">Agent run failed</h3>
+              <p className="text-xs text-red-700 mt-1">Job ID: {activeJob.job_id}</p>
+              <p className="text-sm text-red-800 mt-3 whitespace-pre-wrap">
+                {activeJob.error || "The backend reported an error but did not include details."}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Jobs List */}
       <div>
         <h2 className="text-xl font-medium text-slate-800 mb-4">Past Jobs</h2>
@@ -239,6 +255,11 @@ export function UploadAndJobsView({ onViewSummary }: UploadAndJobsViewProps) {
                         >
                           View Summary
                         </button>
+                      )}
+                      {job.status === 'error' && job.error && (
+                        <span className="inline-block max-w-xs truncate text-red-600 text-xs" title={job.error}>
+                          {job.error}
+                        </span>
                       )}
                     </td>
                   </tr>

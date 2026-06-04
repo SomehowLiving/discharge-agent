@@ -1,0 +1,21 @@
+{
+  "patient_id": "patient_001",
+  "iteration": 1,
+  "overall_edit_distance": 0.0339,
+  "section_distances": {
+    "principal_diagnosis": 0.2462,
+    "secondary_diagnoses": 0.4839,
+    "demographics": 0.0,
+    "discharge_medications": 0.0,
+    "admission_medications": 0.0,
+    "allergies": 0.0,
+    "follow_up": 0.1897,
+    "pending_results": 0.0,
+    "hospital_course": 0.0,
+    "medication_changes": 0.0
+  },
+  "most_changed_section": "secondary_diagnoses",
+  "reward": 0.9661,
+  "rules_in_prompt": 0,
+  "rules_learned_after": 3
+}

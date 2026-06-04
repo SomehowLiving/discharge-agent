@@ -1,0 +1,125 @@
+{
+  "patient_id": "patient_001",
+  "demographics": {
+    "name": "John Harman",
+    "age": "45",
+    "sex": "M",
+    "mrn": "100234",
+    "attending_physician": "Dr. Sarah Patel"
+  },
+  "admission_date": "10/03/2026",
+  "discharge_date": null,
+  "principal_diagnosis": "Non-ST Elevation Myocardial Infarction (NSTEMI) (ICD-10: I21.4)",
+  "secondary_diagnoses": [
+    "Hypertension (ICD-10: I10)",
+    "Dyslipidemia (ICD-10: E78.5)"
+  ],
+  "hospital_course": "Patient was admitted to the CCU for NSTEMI. He was started on dual antiplatelet therapy (Aspirin and Clopidogrel), LMWH, IV nitrates, and a beta-blocker (Metoprolol). Troponin levels trended down after 24 hours. An echocardiogram showed anterior wall hypokinesia with an ejection fraction of 48%. Cardiology recommended a coronary angiography, but the patient declined the procedure. He stabilized over 3 days.",
+  "procedures": [
+    "ECG",
+    "Echocardiogram"
+  ],
+  "admission_medications": [
+    {
+      "medication": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "OD"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "Aspirin",
+      "dose": "75mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Clopidogrel",
+      "dose": "75mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Metoprolol",
+      "dose": "25mg",
+      "frequency": "BD",
+      "duration": null
+    },
+    {
+      "medication": "Atorvastatin",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Amlodipine",
+      "dose": "5mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD (before food)",
+      "duration": null
+    },
+    {
+      "medication": "Isosorbide mononitrate",
+      "dose": "30mg",
+      "frequency": "OD",
+      "duration": null
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Atorvastatin",
+      "change": "Dose increased from 20mg to 40mg OD",
+      "reason": "NSTEMI management"
+    },
+    {
+      "medication": "Aspirin",
+      "change": "Started",
+      "reason": "NSTEMI management"
+    },
+    {
+      "medication": "Clopidogrel",
+      "change": "Started",
+      "reason": "NSTEMI management"
+    },
+    {
+      "medication": "Metoprolol",
+      "change": "Started",
+      "reason": "NSTEMI management"
+    },
+    {
+      "medication": "Pantoprazole",
+      "change": "Started",
+      "reason": "GI protection with dual antiplatelet therapy"
+    },
+    {
+      "medication": "Isosorbide mononitrate",
+      "change": "Started",
+      "reason": "NSTEMI management"
+    }
+  ],
+  "allergies": [
+    "Penicillin (rash)"
+  ],
+  "follow_up": "Follow up with Cardiology OPD in 2 weeks. Repeat Echo in 4 weeks. Check fasting lipid profile at follow-up. Advised on smoking cessation. Instructed to seek immediate medical review if chest pain recurs.\nClinician signature required before discharge.",
+  "pending_results": [
+    "Fasting lipid profile at follow-up"
+  ],
+  "discharge_condition": "Stable, ambulatory",
+  "flags": [
+    {
+      "section": "Hospital Course",
+      "issue": "Patient declined recommended coronary angiography.",
+      "severity": "warning"
+    }
+  ]
+}

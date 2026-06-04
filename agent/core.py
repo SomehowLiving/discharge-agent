@@ -18,9 +18,14 @@ PREFETCH_WORKERS = 4  # parallel PDF extraction threads per patient
 
 class DischargeAgent:
     def __init__(self, patient_dir: str, patient_id: str, verbose: bool = True):
-        api_key = os.environ.get("GEMINI_API_KEY")
+        api_key = os.environ.get("GEMINI_API_KEY", "").strip().strip('"').strip("'")
         if not api_key:
             raise ValueError("GEMINI_API_KEY environment variable not set.")
+        if api_key == "your_gemini_api_key_here" or not api_key.startswith("AIza"):
+            raise ValueError(
+                "GEMINI_API_KEY is not a valid Google AI Studio API key. "
+                "Create a key at https://aistudio.google.com/app/apikey and put it in the root .env file."
+            )
 
         self.client = genai.Client(api_key=api_key)
         self.patient_dir = patient_dir
@@ -282,15 +287,51 @@ class DischargeAgent:
             secondary_diagnoses=d.get("secondary_diagnoses") or [],
             hospital_course=d.get("hospital_course"),
             procedures=d.get("procedures") or [],
-            admission_medications=d.get("admission_medications") or [],
-            discharge_medications=d.get("discharge_medications") or [],
-            medication_changes=d.get("medication_changes") or [],
+            admission_medications=self._normalize_medications(d.get("admission_medications") or []),
+            discharge_medications=self._normalize_medications(d.get("discharge_medications") or []),
+            medication_changes=self._normalize_medication_changes(d.get("medication_changes") or []),
             allergies=d.get("allergies") or [],
             follow_up=d.get("follow_up"),
             pending_results=d.get("pending_results") or [],
             discharge_condition=d.get("discharge_condition"),
             flags=self.state.flags,
         )
+
+    def _normalize_medications(self, meds: list) -> list:
+        normalized = []
+        for med in meds:
+            if not isinstance(med, dict):
+                normalized.append(med)
+                continue
+
+            normalized.append({
+                "medication": (
+                    med.get("medication")
+                    or med.get("medication_name")
+                    or med.get("name")
+                    or med.get("drug")
+                    or "Unknown"
+                ),
+                "dose": med.get("dose") or med.get("dosage"),
+                "frequency": med.get("frequency") or med.get("freq"),
+                "duration": med.get("duration"),
+            })
+        return normalized
+
+    def _normalize_medication_changes(self, changes: list) -> list:
+        normalized = []
+        for change in changes:
+            if not isinstance(change, dict):
+                normalized.append(change)
+                continue
+
+            normalized.append({
+                "medication": change.get("medication") or change.get("drug") or change.get("name") or "Unknown",
+                "change": change.get("change") or change.get("change_type") or "",
+                "reason": change.get("reason"),
+                **({"flagged": change["flagged"]} if "flagged" in change else {}),
+            })
+        return normalized
 
     def _print_step(self, step: AgentStep):
         sep = "─" * 56

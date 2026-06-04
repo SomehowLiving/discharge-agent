@@ -37,8 +37,8 @@ pnpm-debug.log*
 # Runtime uploads and source patient files
 data/
 
-# Experimental frontend not ready to commit
-frontend-v2/
+# Superseded frontend; dispatch-frontend is the integrated app.
+frontend/
 
 # Ad-hoc root npm install artifact; frontend lockfiles live in their app folders.
 /package-lock.json

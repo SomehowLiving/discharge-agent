@@ -1,0 +1,93 @@
+{
+  "patient_id": "patient_005",
+  "demographics": {
+    "name": "Sunita Rao",
+    "age": "58",
+    "sex": "F",
+    "mrn": "500321",
+    "attending_physician": "Dr. Vikram Singh"
+  },
+  "admission_date": "25/03/2026",
+  "discharge_date": null,
+  "principal_diagnosis": "Subarachnoid Haemorrhage secondary to ruptured Anterior Communicating Artery aneurysm (ICD-10: I60.7)",
+  "secondary_diagnoses": [
+    "Hypertension (ICD-10: I10)"
+  ],
+  "hospital_course": "Patient was admitted to the Neurosurgery ICU for a subarachnoid haemorrhage (SAH) secondary to a ruptured anterior communicating artery (AComm) aneurysm. On day 2 of admission, she underwent endovascular coil embolisation of the AComm aneurysm. Post-procedure, she was started on Nimodipine 60mg Q4H for vasospasm prophylaxis and her blood pressure was managed with IV Labetalol. A repeat CT Head on day 3 showed no new haemorrhage or vasospasm. Her GCS improved to 15/15 by day 4, and physiotherapy was initiated. She was transferred to the ward on day 5 and remained stable until discharge.",
+  "procedures": [
+    "Endovascular coil embolisation of AComm aneurysm"
+  ],
+  "admission_medications": [
+    {
+      "medication": "Telmisartan",
+      "dose": "40mg",
+      "frequency": "OD"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "Nimodipine",
+      "dose": "60mg",
+      "frequency": "Q4H",
+      "duration": "21 days (from procedure date)"
+    },
+    {
+      "medication": "Telmisartan",
+      "dose": "80mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Atorvastatin",
+      "dose": "20mg",
+      "frequency": "OD",
+      "duration": null
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Telmisartan",
+      "change": "Dose increased from 40mg to 80mg",
+      "reason": "for better BP control"
+    },
+    {
+      "medication": "Nimodipine",
+      "change": "Added",
+      "reason": "for vasospasm prophylaxis post SAH"
+    },
+    {
+      "medication": "Atorvastatin",
+      "change": "Added",
+      "reason": null
+    }
+  ],
+  "allergies": [
+    "Sulfa drugs (anaphylaxis)"
+  ],
+  "follow_up": "Follow up with Neurosurgery OPD in 2 weeks. Repeat CTA brain in 6 weeks to assess coil integrity. Neuropsychology review in 1 month. Monitor BP daily at home. Strict no heavy lifting for 6 weeks. Return immediately if headache recurs or any neurological change. Clinician signature required before discharge.",
+  "pending_results": [],
+  "discharge_condition": "Stable, GCS 15, ambulatory with support",
+  "flags": [
+    {
+      "section": "Principal Diagnosis",
+      "issue": "Patient treated for subarachnoid haemorrhage from a ruptured cerebral aneurysm, a life-threatening condition.",
+      "severity": "critical"
+    },
+    {
+      "section": "Allergies",
+      "issue": "History of anaphylaxis to Sulfa drugs.",
+      "severity": "critical"
+    },
+    {
+      "section": "Follow-up",
+      "issue": "Strict adherence to activity restrictions and return precautions is critical for patient safety.",
+      "severity": "warning"
+    }
+  ]
+}

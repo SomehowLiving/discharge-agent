@@ -1,0 +1,76 @@
+{
+  "patient_id": "patient_008",
+  "demographics": {
+    "name": "Kavitha Nair",
+    "age": "34",
+    "sex": "F",
+    "mrn": "800567",
+    "attending_physician": "Dr. Pradeep Rao"
+  },
+  "admission_date": "05/04/2026",
+  "discharge_date": null,
+  "principal_diagnosis": "Paracetamol Overdose with early hepatotoxicity (ICD-10: T39.1X2A)",
+  "secondary_diagnoses": [
+    "Major Depressive Disorder (ICD-10: F33.9)"
+  ],
+  "hospital_course": "Patient was admitted for intentional paracetamol overdose. Paracetamol level was in the toxic range (180 mcg/ml) on admission with early hepatotoxicity (ALT 88, AST 102, INR 1.4). A 21-hour N-Acetylcysteine (NAC) IV protocol was initiated immediately. Liver function tests were monitored, with ALT peaking at 210 on day 2 before improving. INR normalized to 1.1 by day 3. Gastroenterology review found no signs of fulminant hepatic failure. Psychiatry liaison assessed the patient on day 1 and day 3. At discharge, the patient expressed remorse and denied current suicidal ideation. A family support plan was established. The psychiatry team recommended increasing her Sertraline dose to 100mg OD and arranged for continued outpatient care.",
+  "procedures": [
+    "N-Acetylcysteine (NAC) IV protocol"
+  ],
+  "admission_medications": [
+    {
+      "medication": "Sertraline",
+      "dose": "50mg",
+      "frequency": "OD"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "Sertraline",
+      "dose": "100mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": "2 weeks"
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Sertraline",
+      "change": "Dose increased from 50mg OD to 100mg OD",
+      "reason": "Reviewed by psychiatry for management of Major Depressive Disorder."
+    },
+    {
+      "medication": "Pantoprazole",
+      "change": "Started",
+      "reason": null
+    }
+  ],
+  "allergies": [
+    "No Known Drug Allergies (NKDA) - Verify with patient"
+  ],
+  "follow_up": "Urgent follow-up with Psychiatry OPD in 3 days. Repeat LFT in 1 week. Follow-up with Medicine OPD in 2 weeks. Patient and family have been counselled on safety planning and provided with a crisis helpline number. Instructed to return immediately for jaundice, severe abdominal pain, or any mental health crisis. Clinician signature required before discharge.",
+  "pending_results": [],
+  "discharge_condition": "Medically stable. LFT improving. Psychiatrically assessed as safe for discharge with plan.",
+  "flags": [
+    {
+      "section": "Diagnosis",
+      "issue": "Intentional overdose attempt requiring medical and psychiatric intervention.",
+      "severity": "critical"
+    },
+    {
+      "section": "Follow-up",
+      "issue": "Urgent psychiatric follow-up required in 3 days.",
+      "severity": "warning"
+    },
+    {
+      "section": "Medication Changes",
+      "issue": "Sertraline dose was doubled.",
+      "severity": "warning"
+    }
+  ]
+}

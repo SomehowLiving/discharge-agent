@@ -1,0 +1,154 @@
+{
+  "patient_id": "patient_003",
+  "demographics": {
+    "name": "Maria Fernandez",
+    "age": "72",
+    "sex": "F",
+    "mrn": "300789",
+    "attending_physician": "Dr. Anil Kumar"
+  },
+  "admission_date": "20/03/2026",
+  "discharge_date": null,
+  "principal_diagnosis": "Community Acquired Pneumonia (ICD-10: J18.9) with Sepsis (ICD-10: A41.9)",
+  "secondary_diagnoses": [
+    "Type 2 Diabetes Mellitus (ICD-10: E11.9)",
+    "Hypertension (ICD-10: I10)",
+    "Hypothyroidism (ICD-10: E03.9)",
+    "Chronic Kidney Disease Stage 3 (ICD-10: N18.3)",
+    "Osteoarthritis (ICD-10: M19.90)",
+    "Acute Kidney Injury (ICD-10: N17.9)"
+  ],
+  "hospital_course": "Patient was admitted to the HDU for community-acquired pneumonia with sepsis, presenting with hypoxia (SpO2 88% on room air). She was started on supplemental oxygen via nasal cannula at 4L/min, IV Piperacillin-Tazobactam, and IV fluids. Due to acute kidney injury, Metformin and Glimepiride were held, and blood glucose was managed with an insulin sliding scale. Her hypothyroidism was managed with continuation of Levothyroxine. The patient showed clinical improvement over 4 days, being weaned off oxygen by day 3 with SpO2 at 96% on room air. Inflammatory markers (CRP) trended downwards. Blood cultures showed no growth after 5 days. Sputum culture identified Streptococcus pneumoniae, sensitive to amoxicillin. Antibiotics were subsequently de-escalated to oral Amoxicillin-Clavulanate for discharge.",
+  "procedures": [],
+  "admission_medications": [
+    {
+      "medication": "Metformin",
+      "dose": "500mg",
+      "frequency": "BD"
+    },
+    {
+      "medication": "Glimepiride",
+      "dose": "2mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Losartan",
+      "dose": "50mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Levothyroxine",
+      "dose": "75mcg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Calcium + Vit D supplement",
+      "dose": null,
+      "frequency": "OD"
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "Amoxicillin-Clavulanate",
+      "dose": "625mg",
+      "frequency": "TID",
+      "duration": "5 days"
+    },
+    {
+      "medication": "Amlodipine",
+      "dose": "10mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Losartan",
+      "dose": "50mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Levothyroxine",
+      "dose": "75mcg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Calcium + Vit D",
+      "dose": null,
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Insulin",
+      "dose": "sliding scale",
+      "frequency": "to be reviewed by endocrinologist",
+      "duration": null
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Metformin",
+      "change": "Stopped",
+      "reason": "Acute Kidney Injury"
+    },
+    {
+      "medication": "Glimepiride",
+      "change": "Stopped",
+      "reason": "Acute Kidney Injury and hyperglycemia management"
+    },
+    {
+      "medication": "Amoxicillin-Clavulanate",
+      "change": "Started",
+      "reason": "Treatment for Streptococcus pneumoniae pneumonia"
+    },
+    {
+      "medication": "Insulin",
+      "change": "Started",
+      "reason": "Management of hyperglycemia after holding oral agents"
+    },
+    {
+      "medication": "Piperacillin-Tazobactam",
+      "change": "Stopped",
+      "reason": "De-escalated to oral antibiotics based on culture results"
+    }
+  ],
+  "allergies": [
+    "No Known Drug Allergies (NKDA) - Verify with patient"
+  ],
+  "follow_up": "Follow up with Pulmonology in 2 weeks with a repeat CXR. Follow up with Nephrology in 1 week to monitor renal function recovery and for a decision on restarting Metformin. Follow up with Endocrinology in 2 weeks for diabetes management review. Repeat TSH in 3 months. Return to the hospital immediately if fever, breathlessness, or confusion worsens. Clinician signature required before discharge.",
+  "pending_results": [],
+  "discharge_condition": "Improving, SpO2 96% on room air.",
+  "flags": [
+    {
+      "section": "medication_changes",
+      "issue": "Oral hypoglycemic agents (Metformin, Glimepiride) held due to AKI. Patient discharged on insulin sliding scale. Requires close follow-up with endocrinology and nephrology.",
+      "severity": "warning"
+    },
+    {
+      "section": "secondary_diagnoses",
+      "issue": "Acute Kidney Injury (N17.9) on Chronic Kidney Disease Stage 3 (N18.3). Requires nephrology follow-up.",
+      "severity": "warning"
+    },
+    {
+      "section": "follow_up",
+      "issue": "Multiple specialist follow-ups required (Pulmonology, Nephrology, Endocrinology) to ensure recovery and manage chronic conditions.",
+      "severity": "info"
+    }
+  ]
+}

@@ -14,8 +14,8 @@ pip install -r requirements.txt
 cp .env.example .env          # add your GEMINI_API_KEY
 python -m uvicorn api:app --host 0.0.0.0 --port 8001
 
-# Frontend (separate terminal)
-cd frontend && npm install && npm run dev   # http://localhost:3000
+# Integrated frontend (separate terminal)
+cd dispatch-frontend && npm install && npm run dev   # http://localhost:3000
 
 # CLI (single patient, no server needed)
 python main.py data/patient_57dee4f4/
@@ -74,17 +74,15 @@ The output is structurally incapable of looking complete when it isn't: flags ap
 
 ## Part 2 — Learning from Doctor Edits
 
-*In progress. This section will be updated when Part 2 is complete.*
+Part 2 is implemented in `part2/` and exposed in the `dispatch-frontend` "Part 2 — Learning Loop" tab.
 
-**Planned approach:**
+**Reward signal:** Normalized character-level edit distance between the agent's draft JSON and the simulated doctor-edited JSON, with per-section edit distance for diagnosis, demographics, medications, allergies, follow-up, pending results, and other high-value sections. Lower edit distance means less clinician editing; reward is `1.0 - edit_distance`.
 
-**Reward signal:** Normalized character-level edit distance between the agent's draft and the clinician-edited version, computed per section. Lower edit distance = higher reward. Section-level accuracy (fraction of sections left unedited) is tracked separately to identify which sections need the most improvement.
+**Simulated reviewer:** `part2/doctor.py` applies a deterministic hidden editing policy to every draft. It adds ICD-10 codes, replaces unverifiable demographic nulls with an explicit verification phrase, marks missing medication doses for prescriber verification, standardizes allergy wording, appends a clinician-signature reminder, and ensures pending-result flags are reflected in `pending_results`.
 
-**Simulated reviewer:** A Gemini prompt playing the role of a "doctor" that applies a consistent, hidden editing policy to drafts — for example, always normalizing medication format to `Drug — Dose — Frequency — Duration`, replacing terse hospital-course summaries with more structured prose, and correcting demographic nulls when the information appears elsewhere in the document. This produces `(draft, edited)` pairs without real clinicians.
+**Learning mechanism:** `part2/memory.py` compares each draft with the edited version. When a section changes meaningfully, it records the relevant correction rule in a persistent correction memory. On the next synthetic patient, `part2/runner.py` injects the learned rules into the Gemini system prompt so later drafts should need fewer edits.
 
-**Learning mechanism:** After each batch of patients, common correction patterns are extracted and stored in a running correction memory. This memory is injected into the system prompt for subsequent runs: "Based on previous clinician edits, apply these formatting conventions: ..." A contextual bandit selects among prompt variants (baseline, correction-memory-augmented, few-shot-example-augmented) and is rewarded by reduced edit distance on the next batch.
-
-**Improvement measurement:** Baseline edit distance established on a held-out set of 2 patients. Metric tracked over 3–5 feedback iterations.
+**Improvement measurement:** `POST /part2/run` runs the loop across `part2/synthetic_patients/`, writes per-patient draft/edited/metrics files under `part2/results/`, and writes a learning curve to `part2/results/run_summary.json`. The frontend polls `/part2/status`, visualizes the before/after edit-distance curve, and lets you inspect draft-vs-edited diffs per patient.
 
 **Limitations of the learning approach (discussed further below).**
 
@@ -121,5 +119,5 @@ The output is structurally incapable of looking complete when it isn't: flags ap
 
 - [x] Source code with run instructions
 - [x] Generated discharge summaries and step traces for all patients in the provided set (`outputs/`)
-- [ ] Part 2: simulated reviewer, learning mechanism, before/after metric
+- [x] Part 2: simulated reviewer, learning mechanism, before/after metric
 - [ ] Video demo (3–5 min, two patients, trace walkthrough, flag/escalate moment)

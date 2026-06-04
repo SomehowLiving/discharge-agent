@@ -1,6 +1,8 @@
 import os
+import json
 import uuid
 import shutil
+import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from typing import Optional
@@ -13,6 +15,8 @@ load_dotenv()
 
 from agent.core import DischargeAgent
 from agent.output_formatter import save_outputs
+from part2.memory import CorrectionMemory
+from part2.runner import RESULTS_DIR, run_learning_loop
 
 app = FastAPI(title="Discharge Summary Agent API", version="1.0.0")
 
@@ -26,11 +30,65 @@ app.add_middleware(
 # In-memory stores
 jobs: dict[str, dict] = {}
 batches: dict[str, dict] = {}
+part2_state: dict = {"status": "idle", "log": [], "started_at": None, "completed_at": None, "error": None}
+part2_lock = threading.Lock()
 
 BATCH_WORKERS = 3  # max parallel agents
 
 UPLOAD_BASE = os.path.join(os.path.dirname(__file__), "data")
 OUTPUT_BASE = os.path.join(os.path.dirname(__file__), "outputs")
+
+
+def _append_part2_log(message: str):
+    with part2_lock:
+        part2_state["log"].append(f"{datetime.now().strftime('%H:%M:%S')} {message}")
+
+
+def _set_part2_state(**updates):
+    with part2_lock:
+        part2_state.update(updates)
+
+
+def _run_part2_learning_loop():
+    api_key = os.getenv("GEMINI_API_KEY", "").strip().strip('"').strip("'")
+    if not api_key:
+        _set_part2_state(
+            status="error",
+            error="GEMINI_API_KEY is not configured.",
+            completed_at=datetime.now().isoformat(),
+        )
+        _append_part2_log("ERROR: GEMINI_API_KEY is not configured.")
+        return
+    if api_key == "your_gemini_api_key_here" or not api_key.startswith("AIza"):
+        message = (
+            "GEMINI_API_KEY is not a valid Google AI Studio API key. "
+            "Create a key at https://aistudio.google.com/app/apikey and put it in the root .env file."
+        )
+        _set_part2_state(
+            status="error",
+            error=message,
+            completed_at=datetime.now().isoformat(),
+        )
+        _append_part2_log(f"ERROR: {message}")
+        return
+
+    try:
+        _append_part2_log("Starting Part 2 learning loop.")
+        summary = run_learning_loop(api_key=api_key, progress_callback=_append_part2_log)
+        _set_part2_state(
+            status="done",
+            error=None,
+            completed_at=datetime.now().isoformat(),
+            summary=summary,
+        )
+        _append_part2_log("Learning loop completed.")
+    except Exception as e:
+        _set_part2_state(
+            status="error",
+            error=str(e),
+            completed_at=datetime.now().isoformat(),
+        )
+        _append_part2_log(f"ERROR: {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -271,3 +329,64 @@ def process_patient_sync(
     jobs[job_id] = {"job_id": job_id, "patient_id": pid, "status": "queued"}
     _run_agent(job_id, patient_dir, pid)
     return jobs[job_id]
+
+
+@app.post("/part2/run")
+def run_part2(background_tasks: BackgroundTasks):
+    """Start the Part 2 simulated doctor-edit learning loop."""
+    with part2_lock:
+        if part2_state["status"] == "running":
+            return dict(part2_state)
+        part2_state.update({
+            "status": "running",
+            "log": [],
+            "started_at": datetime.now().isoformat(),
+            "completed_at": None,
+            "error": None,
+            "summary": None,
+        })
+
+    background_tasks.add_task(_run_part2_learning_loop)
+    return dict(part2_state)
+
+
+@app.get("/part2/status")
+def get_part2_status():
+    """Return live status/log lines for the Part 2 run."""
+    with part2_lock:
+        return dict(part2_state)
+
+
+@app.get("/part2/results")
+def get_part2_results():
+    """Return the latest saved Part 2 learning-curve summary."""
+    path = os.path.join(RESULTS_DIR, "run_summary.json")
+    if not os.path.exists(path):
+        raise HTTPException(status_code=404, detail="Part 2 results have not been generated yet.")
+    with open(path) as f:
+        return json.load(f)
+
+
+@app.get("/part2/memory")
+def get_part2_memory():
+    """Return the current correction-memory state used by the Part 2 prompt."""
+    return CorrectionMemory().to_dict()
+
+
+@app.get("/part2/patient/{patient_id}")
+def get_part2_patient(patient_id: str):
+    """Return draft, edited summary, and metrics for one synthetic Part 2 patient."""
+    patient_dir = os.path.join(RESULTS_DIR, patient_id)
+    paths = {
+        "draft": os.path.join(patient_dir, "draft.json"),
+        "edited": os.path.join(patient_dir, "edited.json"),
+        "metrics": os.path.join(patient_dir, "metrics.json"),
+    }
+    if not all(os.path.exists(path) for path in paths.values()):
+        raise HTTPException(status_code=404, detail=f"No Part 2 outputs found for {patient_id}.")
+
+    payload = {"patient_id": patient_id}
+    for key, path in paths.items():
+        with open(path) as f:
+            payload[key] = json.load(f)
+    return payload

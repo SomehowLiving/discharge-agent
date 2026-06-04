@@ -1,0 +1,72 @@
+{
+  "patient_id": "patient_004",
+  "demographics": {
+    "name": "Raj (Unverified)",
+    "age": "UNVERIFIED - CONFIRM WITH RECORDS",
+    "sex": "Male",
+    "mrn": "UNVERIFIED - CONFIRM WITH RECORDS",
+    "attending_physician": "Dr. Priya Menon"
+  },
+  "admission_date": "22/03/2026",
+  "discharge_date": "24/03/2026",
+  "principal_diagnosis": "Acute Appendicitis (ICD-10: K35.80)",
+  "secondary_diagnoses": [],
+  "hospital_course": "Patient presented to the ER with a 12-hour history of severe right lower quadrant abdominal pain, nausea, and vomiting. Examination revealed guarding, rigidity, and positive Rovsing sign. Labs showed leukocytosis (TLC 16800) and elevated CRP (88 mg/L). Ultrasound and CT abdomen confirmed acute appendicitis without perforation. The patient underwent a laparoscopic appendicectomy on 22/03/2026. The post-operative course was uneventful. The patient was started on IV Ceftriaxone and Metronidazole, which were later switched to oral antibiotics. He tolerated a soft diet, ambulated, and had good pain control. Discharged in good condition on post-operative day 2.",
+  "procedures": [
+    "Laparoscopic Appendicectomy"
+  ],
+  "admission_medications": [],
+  "discharge_medications": [
+    {
+      "medication": "Cefixime",
+      "dose": "200mg",
+      "frequency": "BD",
+      "duration": "5 days"
+    },
+    {
+      "medication": "Metronidazole",
+      "dose": "400mg",
+      "frequency": "TID",
+      "duration": "5 days"
+    },
+    {
+      "medication": "Paracetamol",
+      "dose": "500mg",
+      "frequency": "TID SOS",
+      "duration": "3 days"
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": "5 days"
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Ceftriaxone",
+      "change": "Discontinued",
+      "reason": "Switched to oral equivalent (Cefixime) for discharge."
+    },
+    {
+      "medication": "Metronidazole",
+      "change": "Switched from IV to oral formulation",
+      "reason": "Patient tolerating oral intake."
+    }
+  ],
+  "allergies": [
+    "No Known Drug Allergies (NKDA) - Verify with patient"
+  ],
+  "follow_up": "Follow up in Surgery OPD in 7 days for wound check and histopathology review. Return immediately if fever, wound discharge, or severe abdominal pain. Clinician signature required before discharge.",
+  "pending_results": [
+    "Histopathology report of appendix specimen"
+  ],
+  "discharge_condition": "Good, wound clean and dry.",
+  "flags": [
+    {
+      "section": "Discharge",
+      "issue": "Patient identity unverified. Refused to provide identification documents and left against documentation advice.",
+      "severity": "critical"
+    }
+  ]
+}

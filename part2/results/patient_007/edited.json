@@ -1,0 +1,190 @@
+{
+  "patient_id": "patient_007",
+  "demographics": {
+    "name": "Deepak Sharma",
+    "age": "65",
+    "sex": "M",
+    "mrn": "700445",
+    "attending_physician": "Dr. Meena Iyer"
+  },
+  "admission_date": "01/04/2026",
+  "discharge_date": null,
+  "principal_diagnosis": "Acute Kidney Injury (AKI) on Chronic Kidney Disease (CKD) Stage 4, NSAID-induced (ICD-10: N17.9, N18.4, Y52.1)",
+  "secondary_diagnoses": [
+    "Hyperkalaemia (ICD-10: E87.5)",
+    "Fluid overload (ICD-10: E87.70)",
+    "Anaemia of Chronic Kidney Disease (ICD-10: D63.1)",
+    "Hypertension (ICD-10: I10)",
+    "Type 2 Diabetes Mellitus (ICD-10: E11.9)",
+    "Ischaemic Heart Disease with history of CABG (ICD-10: I25.10, Z95.1)",
+    "Mild pericardial effusion (ICD-10: I31.3)",
+    "Bilateral pleural effusions (ICD-10: J90)",
+    "Cardiomegaly (ICD-10: I51.7)"
+  ],
+  "hospital_course": "Patient presented with AKI on CKD Stage 4, precipitated by self-prescribed Diclofenac. The NSAID was immediately stopped. He was managed for hyperkalaemia with IV Calcium gluconate, insulin with dextrose, and sodium bicarbonate. Fluid overload was treated with high-dose IV furosemide and fluid restriction. Ramipril was held due to AKI. Haemodialysis was discussed but declined by the patient and family. Over the course of admission, potassium levels normalized, creatinine trended down from a peak of 5.2 to 3.6 mg/dl, and urine output improved to 800ml/day. Haemoglobin remained stable.",
+  "procedures": [
+    "IV Calcium gluconate administration",
+    "IV insulin and dextrose administration",
+    "IV furosemide administration"
+  ],
+  "admission_medications": [
+    {
+      "medication": "Torsemide",
+      "dose": "20mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Carvedilol",
+      "dose": "6.25mg",
+      "frequency": "BD"
+    },
+    {
+      "medication": "Ramipril",
+      "dose": "5mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Insulin Glargine",
+      "dose": "30 units",
+      "frequency": "SC night"
+    },
+    {
+      "medication": "Insulin Regular",
+      "dose": "10 units",
+      "frequency": "SC TID"
+    },
+    {
+      "medication": "Atorvastatin",
+      "dose": "40mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Aspirin",
+      "dose": "75mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Clopidogrel",
+      "dose": "75mg",
+      "frequency": "OD"
+    },
+    {
+      "medication": "Diclofenac",
+      "dose": "50mg",
+      "frequency": "TID"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "Torsemide",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Carvedilol",
+      "dose": "6.25mg",
+      "frequency": "BD",
+      "duration": null
+    },
+    {
+      "medication": "Insulin Glargine",
+      "dose": "30 units",
+      "frequency": "SC night",
+      "duration": null
+    },
+    {
+      "medication": "Insulin Regular",
+      "dose": "10 units",
+      "frequency": "SC TID",
+      "duration": null
+    },
+    {
+      "medication": "Atorvastatin",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Aspirin",
+      "dose": "75mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Clopidogrel",
+      "dose": "75mg",
+      "frequency": "OD",
+      "duration": null
+    },
+    {
+      "medication": "Sodium Bicarbonate",
+      "dose": "500mg",
+      "frequency": "TID",
+      "duration": null
+    },
+    {
+      "medication": "Sevelamer",
+      "dose": "800mg",
+      "frequency": "TID with meals",
+      "duration": null
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Diclofenac",
+      "change": "Stopped",
+      "reason": "NSAID-induced Acute Kidney Injury."
+    },
+    {
+      "medication": "Torsemide",
+      "change": "Dose increased from 20mg to 40mg OD",
+      "reason": "Management of fluid overload."
+    },
+    {
+      "medication": "Ramipril",
+      "change": "Held",
+      "reason": "Acute Kidney Injury. To be reassessed at follow-up."
+    },
+    {
+      "medication": "Sodium Bicarbonate",
+      "change": "Started",
+      "reason": "Management of metabolic acidosis."
+    },
+    {
+      "medication": "Sevelamer",
+      "change": "Started",
+      "reason": "For phosphate control in CKD."
+    }
+  ],
+  "allergies": [
+    "No Known Drug Allergies (NKDA) - Verify with patient"
+  ],
+  "follow_up": "Urgent follow-up with Nephrology in 3 days for renal function recheck. Follow-up with Cardiology in 2 weeks for EF 40% and pericardial effusion. Repeat ECG in 1 week. Patient to monitor weight daily at home. Return immediately if urine output drops or breathlessness worsens. Clinician signature required before discharge.",
+  "pending_results": [
+    "24-hour urine protein"
+  ],
+  "discharge_condition": "Improving, oedema reduced, urine output 800ml/day.",
+  "flags": [
+    {
+      "section": "Medication",
+      "issue": "Patient self-prescribed Diclofenac (NSAID) leading to AKI on CKD. Strict contraindication counselled.",
+      "severity": "critical"
+    },
+    {
+      "section": "Treatment",
+      "issue": "Patient declined recommended haemodialysis for AKI.",
+      "severity": "warning"
+    },
+    {
+      "section": "Cardiology",
+      "issue": "Reduced Ejection Fraction (40%) and mild pericardial effusion noted on echo.",
+      "severity": "warning"
+    },
+    {
+      "section": "Medication",
+      "issue": "Ramipril (ACE inhibitor) held at discharge due to AKI.",
+      "severity": "info"
+    }
+  ]
+}

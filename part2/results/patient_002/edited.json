@@ -1,0 +1,87 @@
+{
+  "patient_id": "patient_002",
+  "demographics": {
+    "name": "UNVERIFIED - CONFIRM WITH RECORDS",
+    "age": "UNVERIFIED - CONFIRM WITH RECORDS",
+    "sex": "UNVERIFIED - CONFIRM WITH RECORDS",
+    "mrn": "200456",
+    "attending_physician": "Dr. Ramesh Nair"
+  },
+  "admission_date": "15/03/2026",
+  "discharge_date": "18/03/2026",
+  "principal_diagnosis": "Diabetic Ketoacidosis (ICD-10: E11.10)",
+  "secondary_diagnoses": [
+    "Type 2 Diabetes Mellitus (ICD-10: E11.9)",
+    "Acute Kidney Injury on Chronic Kidney Disease (ICD-10: N17.9, E11.22)",
+    "Diabetic Nephropathy (ICD-10: E11.22)",
+    "Metabolic Acidosis (ICD-10: E87.2)",
+    "Hyperkalemia (ICD-10: E87.5)",
+    "Hyponatremia (ICD-10: E87.1)",
+    "Leukocytosis (ICD-10: D72.829)"
+  ],
+  "hospital_course": "Patient with a history of Type 2 Diabetes Mellitus was admitted via the Emergency Department with Diabetic Ketoacidosis (DKA), precipitated by missing insulin doses for three days. Initial presentation included altered sensorium, vomiting, and polyuria. Investigations revealed severe hyperglycemia (Blood Glucose 486 mg/dl), metabolic acidosis (pH 7.21), 3+ urine ketones, acute kidney injury (Creatinine 2.1 mg/dl), and electrolyte imbalances. The patient was managed with IV fluids, an IV insulin infusion, and potassium correction. There was significant clinical improvement, with resolution of acidosis, normalization of blood glucose and electrolytes, and improvement in renal function. The patient was successfully transitioned from IV to subcutaneous insulin and was discharged in a hemodynamically stable and glucose-controlled condition.",
+  "procedures": [
+    "IV Insulin infusion",
+    "Foley catheter insertion"
+  ],
+  "admission_medications": [
+    {
+      "medication": "Insulin",
+      "dose": "[TO VERIFY WITH PRESCRIBER]",
+      "frequency": null
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "Insulin Glargine",
+      "dose": "20 units",
+      "frequency": "SC at night",
+      "duration": null
+    },
+    {
+      "medication": "Insulin Regular",
+      "dose": "8 units",
+      "frequency": "SC before meals (TID)",
+      "duration": null
+    },
+    {
+      "medication": "Metformin",
+      "dose": "500mg",
+      "frequency": "BD",
+      "duration": "held pending renal review"
+    },
+    {
+      "medication": "Pantoprazole",
+      "dose": "40mg",
+      "frequency": "OD",
+      "duration": null
+    }
+  ],
+  "medication_changes": [
+    {
+      "medication": "Metformin",
+      "change": "Held",
+      "reason": "Pending renal review due to acute kidney injury."
+    },
+    {
+      "medication": "Insulin",
+      "change": "Regimen changed to basal-bolus (Glargine and Regular)",
+      "reason": "To optimize glycemic control post-DKA."
+    }
+  ],
+  "allergies": [
+    "No Known Drug Allergies (NKDA) - Verify with patient"
+  ],
+  "follow_up": "Nephrology review in 1 week. Repeat creatinine and electrolytes in 3 days. Endocrinology in 2 weeks. Review immediately if vomiting, high glucose, or reduced urine output. Clinician signature required before discharge.",
+  "pending_results": [
+    "Urine C/S report"
+  ],
+  "discharge_condition": "Hemodynamically stable, glucose controlled",
+  "flags": [
+    {
+      "section": "Diagnosis",
+      "issue": "Mild discrepancy in primary diagnosis documentation between ER (DKA) and Ward (AKI secondary to DKA).",
+      "severity": "info"
+    }
+  ]
+}

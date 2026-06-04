@@ -421,7 +421,7 @@ Same as `/process` but blocks until the agent finishes and returns the full resu
 
 ## Frontend
 
-The React app (`frontend/`) is a single-page application with two views.
+The React app (`dispatch-frontend/`) is a single-page application with Part 1 and Part 2 tabs.
 
 ### `UploadAndJobsView`
 Shown on load and after navigating back from a summary.
@@ -485,7 +485,7 @@ The step cap (25) prevents runaway loops. If hit, a critical flag is attached to
 pip install -r requirements.txt
 
 # Frontend dependencies
-cd frontend && npm install
+cd dispatch-frontend && npm install
 ```
 
 ### Environment
@@ -506,12 +506,12 @@ Use `python -m uvicorn` (not the `uvicorn` binary directly) to ensure the correc
 ### Frontend
 
 ```bash
-cd frontend
+cd dispatch-frontend
 npm run dev     # development server on port 3000
 npm run build   # production build
 ```
 
-The frontend calls `http://localhost:8001` — both must be running simultaneously.
+The frontend calls `http://localhost:8001` by default. Set `VITE_API_BASE` in `dispatch-frontend/.env` to use a different backend URL. Frontend and backend must be running simultaneously.
 
 ---
 
