@@ -1,6 +1,43 @@
 import { Job } from "../types";
 import { NullField } from "./ui/NullField";
 
+function DetailText({ text }: { text: string }) {
+  const parts = text
+    .split(/\n+|(?<=[.!?])\s+(?=[A-Z])/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+
+  if (parts.length <= 1) {
+    return <p className="whitespace-pre-wrap leading-relaxed">{text}</p>;
+  }
+
+  return (
+    <div className="space-y-2">
+      {parts.map((part, index) => (
+        <p key={index} className="leading-relaxed">{part}</p>
+      ))}
+    </div>
+  );
+}
+
+function InfoList({ items, tone = "slate" }: { items: string[]; tone?: "slate" | "amber" | "red" }) {
+  const toneClass = tone === "amber"
+    ? "border-amber-200 bg-amber-50 text-amber-900"
+    : tone === "red"
+      ? "border-red-200 bg-red-50 text-red-900"
+      : "border-slate-200 bg-slate-50 text-slate-800";
+
+  return (
+    <div className="space-y-2">
+      {items.map((item, index) => (
+        <div key={index} className={`rounded-lg border px-3 py-2 text-sm ${toneClass}`}>
+          <DetailText text={item} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function PatientInfoCard({ summary }: { summary: Job["summary"] }) {
   if (!summary) return null;
   const d = summary.demographics;
@@ -59,7 +96,7 @@ export function HospitalCourseCard({ summary }: { summary: Job["summary"] }) {
     <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
       <h3 className="text-lg font-semibold text-slate-800 mb-4 border-b pb-2">Hospital Course</h3>
       <div className="text-sm text-slate-700 whitespace-pre-wrap leading-relaxed">
-        {summary.hospital_course || <NullField />}
+        {summary.hospital_course ? <DetailText text={summary.hospital_course} /> : <NullField />}
       </div>
     </div>
   );
@@ -72,7 +109,7 @@ export function MedicationsCard({ summary }: { summary: Job["summary"] }) {
     if (!meds || meds.length === 0) return <div className="mt-2 text-sm"><NullField /></div>;
     return (
       <div className="overflow-x-auto mt-2">
-        <table className="w-full text-left text-sm whitespace-nowrap">
+        <table className="w-full text-left text-sm">
           <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
             <tr>
               <th className="px-4 py-2 font-medium">Medication</th>
@@ -84,10 +121,10 @@ export function MedicationsCard({ summary }: { summary: Job["summary"] }) {
           <tbody className="divide-y divide-slate-100">
             {meds.map((m, i) => (
               <tr key={i} className="hover:bg-slate-50">
-                <td className="px-4 py-2 font-medium text-slate-800">{m.medication}</td>
-                <td className="px-4 py-2 text-slate-600">{m.dose || "-"}</td>
-                <td className="px-4 py-2 text-slate-600">{m.frequency || "-"}</td>
-                <td className="px-4 py-2 text-slate-600">{m.duration || "-"}</td>
+                <td className="px-4 py-2 font-medium text-slate-800 whitespace-normal">{m.medication}</td>
+                <td className="px-4 py-2 text-slate-600 whitespace-normal">{m.dose || "-"}</td>
+                <td className="px-4 py-2 text-slate-600 whitespace-normal">{m.frequency || "-"}</td>
+                <td className="px-4 py-2 text-slate-600 whitespace-normal">{m.duration || "-"}</td>
               </tr>
             ))}
           </tbody>
@@ -123,13 +160,13 @@ export function MedicationsCard({ summary }: { summary: Job["summary"] }) {
               return (
                 <div key={i} className="flex items-start bg-slate-50 p-3 rounded-lg border border-slate-200">
                   <div className={`mt-0.5 px-2 py-0.5 rounded text-xs font-bold border shrink-0 w-20 text-center ${bg}`}>
-                    {change.change}
+                    {change.change || "CHANGE"}
                   </div>
-                  <div className="ml-4">
+                  <div className="ml-4 min-w-0">
                     <div className="text-sm font-medium text-slate-900">{change.medication}</div>
-                    <div className="text-sm text-slate-600 mt-1 flex items-start">
+                    <div className="text-sm text-slate-600 mt-1 flex items-start leading-relaxed">
                       {missingReason && <span className="text-amber-500 mr-1.5">⚠</span>}
-                      {change.reason || <span className="italic text-slate-400">No reason documented</span>}
+                      <span>{change.reason ? <DetailText text={change.reason} /> : <span className="italic text-slate-400">No reason documented</span>}</span>
                     </div>
                   </div>
                 </div>
@@ -150,9 +187,7 @@ export function ListsCard({ summary }: { summary: Job["summary"] }) {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <h3 className="text-lg font-semibold text-slate-800 mb-3 border-b pb-2">Procedures</h3>
         {summary.procedures && summary.procedures.length > 0 ? (
-          <ul className="list-disc pl-5 text-sm text-slate-700 space-y-1">
-            {summary.procedures.map((p, i) => <li key={i}>{p}</li>)}
-          </ul>
+          <InfoList items={summary.procedures} />
         ) : <NullField />}
       </div>
 
@@ -160,16 +195,17 @@ export function ListsCard({ summary }: { summary: Job["summary"] }) {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <h3 className="text-lg font-semibold text-slate-800 mb-3 border-b pb-2">Allergies</h3>
         {summary.allergies && summary.allergies.length > 0 ? (
-          <ul className="list-disc pl-5 text-sm text-slate-700 space-y-1">
+          <div className="space-y-2">
             {summary.allergies.map((a, i) => {
               const notKnown = a.toLowerCase().includes("not known");
               return (
-                <li key={i}>
-                  {a} {notKnown && <span className="text-red-600 font-bold ml-2 text-xs">VERIFY WITH PATIENT</span>}
-                </li>
+                <div key={i} className={`rounded-lg border px-3 py-2 text-sm ${notKnown ? "border-red-200 bg-red-50 text-red-900" : "border-slate-200 bg-slate-50 text-slate-800"}`}>
+                  <DetailText text={a} />
+                  {notKnown && <div className="mt-1 text-xs font-bold text-red-700">VERIFY WITH PATIENT</div>}
+                </div>
               );
             })}
-          </ul>
+          </div>
         ) : <NullField />}
       </div>
 
@@ -179,9 +215,7 @@ export function ListsCard({ summary }: { summary: Job["summary"] }) {
            <h3 className="text-lg font-semibold text-amber-900 mb-3 border-b border-amber-200 pb-2 flex items-center">
              <span className="mr-2">⚠</span> Pending Results
            </h3>
-           <ul className="list-disc pl-5 text-sm text-amber-800 space-y-1">
-             {summary.pending_results.map((p, i) => <li key={i}>{p}</li>)}
-           </ul>
+           <InfoList items={summary.pending_results} tone="amber" />
          </div>
       )}
 
@@ -189,7 +223,7 @@ export function ListsCard({ summary }: { summary: Job["summary"] }) {
       <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         <h3 className="text-lg font-semibold text-slate-800 mb-3 border-b pb-2">Follow-up</h3>
         <div className="text-sm text-slate-700 whitespace-pre-wrap leading-relaxed">
-          {summary.follow_up || <NullField />}
+          {summary.follow_up ? <DetailText text={summary.follow_up} /> : <NullField />}
         </div>
       </div>
     </div>

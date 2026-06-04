@@ -29,6 +29,142 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+function DetailDisclosure({ title, value }: { title: string; value: unknown }) {
+  return (
+    <details className="rounded-lg border border-slate-200 bg-white">
+      <summary className="cursor-pointer px-3 py-2 text-[11px] font-bold uppercase tracking-wide text-slate-500 hover:bg-slate-50">
+        {title}
+      </summary>
+      <pre className="max-h-72 overflow-auto whitespace-pre-wrap break-words border-t border-slate-200 bg-slate-950 px-3 py-2 font-mono text-xs leading-relaxed text-slate-100">
+        {stringify(value)}
+      </pre>
+    </details>
+  );
+}
+
+function SummaryValue({ value }: { value: unknown }) {
+  if (value === null || value === undefined || value === "") {
+    return <span className="italic text-slate-400">Not found in documents</span>;
+  }
+
+  if (Array.isArray(value)) {
+    if (value.length === 0) return <span className="italic text-slate-400">None documented</span>;
+    return (
+      <div className="space-y-2">
+        {value.map((item, index) => (
+          <div key={index} className="rounded border border-slate-200 bg-white px-2 py-1.5">
+            <SummaryValue value={item} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (typeof value === "object") {
+    return (
+      <dl className="grid grid-cols-1 gap-2">
+        {Object.entries(value as Record<string, unknown>).map(([key, nested]) => (
+          <div key={key} className="rounded border border-slate-200 bg-white px-2 py-1.5">
+            <dt className="text-[10px] font-bold uppercase tracking-wide text-slate-500">{key.replaceAll("_", " ")}</dt>
+            <dd className="mt-1"><SummaryValue value={nested} /></dd>
+          </div>
+        ))}
+      </dl>
+    );
+  }
+
+  return <span className="whitespace-pre-wrap">{String(value)}</span>;
+}
+
+function reportText(value: unknown): string {
+  if (value === null || value === undefined || value === "") return "Not found in documents";
+  return String(value);
+}
+
+function ReportList({ items }: { items: unknown }) {
+  if (!Array.isArray(items) || items.length === 0) {
+    return <p className="italic text-slate-500">None documented</p>;
+  }
+
+  return (
+    <ul className="list-disc space-y-1 pl-5">
+      {items.map((item, index) => (
+        <li key={index}>
+          {typeof item === "object" && item !== null ? (
+            <span>
+              {Object.entries(item as Record<string, unknown>)
+                .filter(([, value]) => value !== null && value !== undefined && value !== "")
+                .map(([key, value]) => `${key.replaceAll("_", " ")}: ${String(value)}`)
+                .join("; ")}
+            </span>
+          ) : (
+            <span>{reportText(item)}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function ReportSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <section className="border-t border-slate-200 pt-3 first:border-t-0 first:pt-0">
+      <h4 className="mb-1.5 text-[12px] font-bold uppercase tracking-wide text-slate-700">{title}</h4>
+      <div className="text-xs leading-relaxed text-slate-800">{children}</div>
+    </section>
+  );
+}
+
+function FinalizedSummaryDetails({ summary }: { summary: Record<string, unknown> }) {
+  return (
+    <Section title="Finalize summary review">
+      <div className="space-y-4 bg-white px-4 py-3">
+        <ReportSection title="Final status">
+          <p><span className="font-semibold">Principal diagnosis:</span> {reportText(summary.principal_diagnosis)}</p>
+          <div>
+            <p className="font-semibold">Hospital course:</p>
+            <div className="mt-1">{formatLongText(reportText(summary.hospital_course))}</div>
+          </div>
+          <p><span className="font-semibold">Discharge condition:</span> {reportText(summary.discharge_condition)}</p>
+          <p><span className="font-semibold">Follow-up:</span> {reportText(summary.follow_up)}</p>
+        </ReportSection>
+
+        <ReportSection title="Medication reconciliation">
+          <ReportList items={summary.medication_changes} />
+        </ReportSection>
+
+        <ReportSection title="Pending results requiring handoff">
+          <ReportList items={summary.pending_results} />
+        </ReportSection>
+
+        <ReportSection title="Safety fields to verify">
+          <p><span className="font-semibold">Allergies:</span></p>
+          <ReportList items={summary.allergies} />
+        </ReportSection>
+      </div>
+    </Section>
+  );
+}
+
+function formatLongText(text: string) {
+  const chunks = text
+    .split(/(?<=[.!?])\s+(?=[A-Z])/)
+    .map((chunk) => chunk.trim())
+    .filter(Boolean);
+
+  if (chunks.length <= 1) {
+    return <p className="whitespace-pre-wrap">{text}</p>;
+  }
+
+  return (
+    <div className="space-y-2">
+      {chunks.map((chunk, index) => (
+        <p key={index} className="whitespace-pre-wrap">{chunk}</p>
+      ))}
+    </div>
+  );
+}
+
 export function TraceTimeline({ steps }: { steps: Job["steps"] }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -87,7 +223,7 @@ export function TraceTimeline({ steps }: { steps: Job["steps"] }) {
                     <div className="space-y-3">
                       {step.reasoning && (
                         <Section title="Model reasoning">
-                          <p className="whitespace-pre-wrap">{step.reasoning}</p>
+                          {formatLongText(step.reasoning)}
                         </Section>
                       )}
                       {isFlag && (
@@ -102,21 +238,40 @@ export function TraceTimeline({ steps }: { steps: Job["steps"] }) {
                       {step.action === "check_drug_interactions" && (
                         <Section title="Medication safety check">
                           <p className="font-medium">Medications checked</p>
-                          <p className="mt-1 whitespace-pre-wrap">{(step.inputs?.medications || []).join(", ") || "None provided"}</p>
+                          <div className="mt-1 flex flex-wrap gap-1.5">
+                            {(step.inputs?.medications || []).map((medication: string) => (
+                              <span key={medication} className="rounded border border-slate-200 bg-white px-2 py-0.5 text-[11px] font-medium text-slate-700">
+                                {medication}
+                              </span>
+                            ))}
+                            {(!step.inputs?.medications || step.inputs.medications.length === 0) && <span>None provided</span>}
+                          </div>
                           <p className="mt-2 font-medium">Result</p>
                           <p className="mt-1">{step.result?.safe ? "No known interactions found in the mock interaction table." : `${step.result?.interaction_count || 0} interaction(s) found.`}</p>
+                          {step.result?.interactions_found?.length > 0 && (
+                            <ul className="mt-2 list-disc space-y-1 pl-5">
+                              {step.result.interactions_found.map((interaction: any, idx: number) => (
+                                <li key={idx}>
+                                  <span className="font-semibold">{interaction.severity}</span>: {interaction.description}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </Section>
                       )}
                       {isFinal && (
-                        <Section title="Finalized sections">
-                          <div className="flex flex-wrap gap-1.5">
-                            {(step.result?.sections || []).map((section: string) => (
-                              <span key={section} className="rounded bg-green-50 px-2 py-0.5 text-[11px] font-medium text-green-700 border border-green-200">
-                                {section}
-                              </span>
-                            ))}
-                          </div>
-                        </Section>
+                        <>
+                          <Section title="Finalized sections">
+                            <div className="flex flex-wrap gap-1.5">
+                              {(step.result?.sections || []).map((section: string) => (
+                                <span key={section} className="rounded bg-green-50 px-2 py-0.5 text-[11px] font-medium text-green-700 border border-green-200">
+                                  {section}
+                                </span>
+                              ))}
+                            </div>
+                          </Section>
+                          <FinalizedSummaryDetails summary={step.inputs || {}} />
+                        </>
                       )}
                       {!isFlag && step.action !== "check_drug_interactions" && !isFinal && (
                         <Section title="Tool input">
@@ -127,6 +282,9 @@ export function TraceTimeline({ steps }: { steps: Job["steps"] }) {
                         <Section title="Tool result">
                           <pre className="whitespace-pre-wrap break-words font-mono">{stringify(step.result)}</pre>
                         </Section>
+                      )}
+                      {isFinal && (
+                        <DetailDisclosure title="Raw finalize payload" value={step.inputs} />
                       )}
                     </div>
                   </div>
