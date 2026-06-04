@@ -1,0 +1,64 @@
+ER TRIAGE NOTE
+Date: 22/03/2026
+Time: 03:15 AM
+
+Patient walked in. No ID provided. Appears approximately 30-35 years old, male.
+C/O: Severe abdominal pain, right lower quadrant, 12 hours duration.
+Nausea and vomiting x 3 episodes.
+No fever reported.
+
+VITALS: BP 122/78, HR 96, Temp 99.8F, RR 16, SpO2 99%
+
+EXAMINATION: Guarding and rigidity RLQ. Rovsing sign positive. Rebound tenderness present.
+
+INVESTIGATIONS ORDERED:
+CBC: Hb 14.1, TLC 16800 (neutrophilia)
+CRP: 88 mg/L
+USG Abdomen: Appendix visualised, 9mm diameter, non-compressible, periappendiceal fat stranding. Impression: Acute Appendicitis.
+CT Abdomen: Confirmed acute appendicitis, no perforation.
+
+---
+
+SURGICAL NOTE
+Date: 22/03/2026
+Surgeon: Dr. Priya Menon
+
+DIAGNOSIS: Acute Appendicitis
+
+PROCEDURE: Laparoscopic Appendicectomy performed under general anaesthesia.
+Intraoperative findings: Inflamed appendix, no perforation, no peritoneal contamination.
+Specimen sent for histopathology.
+Estimated blood loss: Minimal.
+No intraoperative complications.
+
+POST-OP NOTE (Day 1):
+Patient comfortable. Tolerating oral fluids. Pain score 3/10. Wound clean and dry.
+IV Ceftriaxone + Metronidazole continued.
+Histopathology: Pending.
+
+POST-OP NOTE (Day 2):
+Tolerating soft diet. Ambulating. Pain score 1/10.
+Switched to oral antibiotics.
+
+DISCHARGE NOTE
+Date: 24/03/2026
+
+Patient: Identity unverified — no documents produced. Gave name as "Raj."
+Demographics: Age, MRN, DOB — NOT AVAILABLE.
+
+CONDITION: Good, wound clean and dry.
+
+DISCHARGE MEDICATIONS:
+1. Cefixime 200mg BD x 5 days
+2. Metronidazole 400mg TID x 5 days
+3. Paracetamol 500mg TID SOS x 3 days
+4. Pantoprazole 40mg OD x 5 days
+
+ALLERGIES: Not known (patient unable to confirm)
+
+PENDING: Histopathology report of appendix specimen.
+
+FOLLOW-UP:
+Surgery OPD in 7 days for wound check and histopathology review.
+Return immediately if fever, wound discharge, or severe abdominal pain.
+Patient left against documentation advice — refused to provide identity documents.

@@ -1,0 +1,52 @@
+ADMISSION NOTE
+Date: 25/03/2026
+Patient: Sunita Rao, 58F, MRN: 500321
+Attending: Dr. Vikram Singh
+
+CHIEF COMPLAINT: Sudden onset severe headache, vomiting, neck stiffness
+
+HISTORY: Sudden thunderclap headache described as "worst headache of life." Onset during routine activity. Associated with vomiting x 4 episodes, photophobia, neck stiffness. No fever. No focal neurological deficits on arrival. No prior headache history.
+
+PAST HISTORY: Hypertension (poorly controlled). No prior neurological illness.
+
+MEDICATIONS ON ADMISSION:
+1. Telmisartan 40mg OD (irregularly taken)
+
+ALLERGIES: Sulfa drugs (anaphylaxis)
+
+VITALS: BP 190/110, HR 78, RR 14, SpO2 99%, GCS 14/15
+
+INVESTIGATIONS:
+CT Head (non-contrast): Hyperdense blood in basal cisterns — subarachnoid haemorrhage confirmed.
+CT Angiography: Anterior communicating artery (AComm) aneurysm, 6mm.
+LP: Xanthochromia confirmed.
+CBC: Normal
+Coagulation: PT/INR 1.1, APTT 28
+Creatinine: 0.8 mg/dl
+Na: 136, K: 4.0
+
+DIAGNOSIS: Subarachnoid Haemorrhage (SAH) secondary to ruptured AComm aneurysm
+
+HOSPITAL COURSE:
+Patient admitted to Neurosurgery ICU. Neurosurgery review — endovascular coiling advised. Interventional radiology performed coil embolisation of AComm aneurysm on day 2. Post-procedure: Nimodipine 60mg Q4H started for vasospasm prophylaxis. BP management with IV Labetalol. Repeat CT Head day 3: No new haemorrhage. No vasospasm. Patient GCS improved to 15 by day 4. Physiotherapy started. Transferred to ward day 5. Stable until discharge.
+
+DISCHARGE MEDICATIONS:
+1. Nimodipine 60mg Q4H x 21 days (from procedure date)
+2. Telmisartan 80mg OD
+3. Pantoprazole 40mg OD
+4. Atorvastatin 20mg OD
+
+MEDICATION CHANGES:
+- Telmisartan dose increased from 40mg to 80mg for better BP control.
+- Nimodipine added for vasospasm prophylaxis post SAH.
+- Atorvastatin newly added.
+
+CONDITION: Stable, GCS 15, ambulatory with support
+
+FOLLOW-UP:
+Neurosurgery OPD in 2 weeks.
+Repeat CTA brain in 6 weeks to assess coil integrity.
+Neuropsychology review in 1 month.
+BP monitoring daily at home.
+Strict no heavy lifting x 6 weeks.
+Return immediately if headache recurs or any neurological change.

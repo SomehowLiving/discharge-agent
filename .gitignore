@@ -1,0 +1,44 @@
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.python-version
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Node / frontend
+node_modules/
+**/node_modules/
+dist/
+build/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local editor and OS files
+.DS_Store
+.idea/
+.vscode/
+.claude/settings.local.json
+
+# Runtime uploads and source patient files
+data/
+
+# Experimental frontend not ready to commit
+frontend-v2/
+
+# Ad-hoc root npm install artifact; frontend lockfiles live in their app folders.
+/package-lock.json

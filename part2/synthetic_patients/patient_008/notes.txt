@@ -1,0 +1,47 @@
+ADMISSION NOTE
+Date: 05/04/2026
+Patient: Kavitha Nair, 34F, MRN: 800567
+Attending: Dr. Pradeep Rao (Medicine) + Psychiatry Liaison
+
+CHIEF COMPLAINT: Intentional overdose — paracetamol tablets (quantity unclear)
+
+HISTORY: 34-year-old female brought by husband. Found unresponsive. Suspected ingestion of paracetamol tablets, estimated 20-30 tablets, approximately 4 hours prior to arrival. H/O depression, on treatment. Husband reports patient had expressed hopelessness recently. No prior overdose attempts documented.
+
+PAST HISTORY: Major Depressive Disorder (on sertraline 50mg OD). No other medical conditions.
+
+MEDICATIONS ON ADMISSION:
+1. Sertraline 50mg OD
+
+ALLERGIES: None known
+
+VITALS: BP 110/70, HR 102, RR 18, SpO2 98%, GCS 13/15, Temp 98.6F
+
+INVESTIGATIONS:
+Paracetamol level: 180 mcg/ml (toxic range — above treatment line on Rumack-Matthew nomogram)
+LFT: ALT 88, AST 102 (mildly elevated — early hepatotoxicity)
+PT/INR: 1.4 (mildly elevated)
+Creatinine: 0.9 mg/dl
+Blood glucose: 88 mg/dl
+CBC: Normal
+Urine pregnancy test: Negative
+
+DIAGNOSIS: Paracetamol Overdose with early hepatotoxicity. Major Depressive Disorder.
+
+HOSPITAL COURSE:
+N-Acetylcysteine (NAC) IV protocol started immediately (21-hour protocol). LFT monitored every 8 hours — ALT peaked at 210 on day 2, then improved. INR normalised to 1.1 by day 3. Gastroenterology review — no signs of fulminant hepatic failure. Psychiatry liaison assessment done day 1 and day 3. Patient appropriate for discharge from medical perspective. Psychiatric team reviewed and recommended continued outpatient psychiatric care. Patient expressed remorse, no current suicidal ideation at discharge. Family support plan in place. Sertraline dose reviewed — increased to 100mg OD by psychiatry.
+
+DISCHARGE MEDICATIONS:
+1. Sertraline 100mg OD (increased from 50mg)
+2. Pantoprazole 40mg OD x 2 weeks
+
+CONDITION: Medically stable. LFT improving. Psychiatrically assessed as safe for discharge with plan.
+
+FOLLOW-UP:
+Psychiatry OPD in 3 days (urgent).
+LFT repeat in 1 week.
+Medicine OPD in 2 weeks.
+Patient and family counselled on safety planning.
+Crisis helpline number provided.
+Return immediately if jaundice, severe abdominal pain, or any mental health crisis.
+
+ALLERGIES: None known

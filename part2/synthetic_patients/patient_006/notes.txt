@@ -1,0 +1,49 @@
+ADMISSION NOTE
+Date: 28/03/2026
+Patient: Arjun Mehta, 8M, MRN: 600112
+Attending: Dr. Leena D'Souza (Paediatrics)
+Guardian: Mother, Priya Mehta
+
+CHIEF COMPLAINT: High grade fever, seizure episode at home
+
+HISTORY: 8-year-old male. Fever for 3 days (38.9-40°C). One episode of generalised tonic-clonic seizure at home, lasting 2 minutes, self-limiting. No prior seizure history. No meningism. Up to date on immunisations. No sick contacts.
+
+PAST HISTORY: Nil significant
+
+MEDICATIONS ON ADMISSION: Nil regular medications
+
+ALLERGIES: None known
+
+VITALS: Temp 39.8°C, HR 124 bpm, RR 24, SpO2 98%, BP 98/62
+
+EXAMINATION: Alert, irritable. Throat: Mildly red. No meningeal signs. No rash. No lymphadenopathy. Ear: Right otitis media noted.
+
+INVESTIGATIONS:
+CBC: Hb 11.8, TLC 16200 (lymphocytosis), Platelets 280000
+CRP: 48 mg/L
+Blood Culture: Sent, awaited
+Dengue NS1: Negative
+Malaria: Negative
+EEG: Normal
+CT Head: Normal (done given first seizure + fever)
+
+DIAGNOSIS: Febrile Seizure with Right Acute Otitis Media
+
+HOSPITAL COURSE:
+Patient admitted for observation post-seizure. Paracetamol and tepid sponging for fever control. IV Amoxicillin-Clavulanate started for otitis media. Seizure prophylaxis not initiated (first febrile seizure, short duration, normal EEG, normal CT). Fever resolved by day 2. Patient eating well. Blood culture: No growth at 48 hours. Stepped down to oral antibiotics day 2.
+
+DISCHARGE MEDICATIONS:
+1. Amoxicillin-Clavulanate suspension 228mg/5ml — 7ml BD x 7 days
+2. Paracetamol syrup 250mg/5ml — 10ml TDS SOS for fever
+3. Ibuprofen 100mg/5ml syrup — 8ml TDS SOS (alternate with paracetamol)
+
+CONDITION: Afebrile, active, tolerating orally
+
+FOLLOW-UP:
+Paediatrics OPD in 1 week.
+ENT review in 2 weeks for otitis media resolution.
+EEG repeat if further seizures occur.
+Parents counselled on febrile seizure management at home.
+Blood culture result to be checked — no growth so far but 5-day report pending.
+
+ALLERGIES: None known

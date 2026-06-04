@@ -1,0 +1,65 @@
+ADMISSION NOTE
+Date: 01/04/2026
+Patient: Deepak Sharma, 65M, MRN: 700445
+Attending: Dr. Meena Iyer (Nephrology)
+
+CHIEF COMPLAINT: Decreased urine output, bilateral leg swelling, breathlessness x 1 week
+
+HISTORY: Known CKD Stage 4 (baseline Cr ~2.8 mg/dl). Presents with worsening leg oedema, dyspnoea on exertion, reduced urine output past 7 days. No fever. No chest pain. Had started an NSAID (Diclofenac) 10 days ago for back pain — not prescribed.
+
+PAST HISTORY: CKD Stage 4, Hypertension, Type 2 Diabetes, Ischaemic Heart Disease (CABG 2019)
+
+MEDICATIONS ON ADMISSION:
+1. Torsemide 20mg OD
+2. Carvedilol 6.25mg BD
+3. Ramipril 5mg OD
+4. Insulin Glargine 30 units SC night
+5. Insulin Regular 10 units SC TID
+6. Atorvastatin 40mg OD
+7. Aspirin 75mg OD
+8. Clopidogrel 75mg OD (post-CABG)
+9. Diclofenac 50mg TID (self-prescribed, recent)
+
+ALLERGIES: None known
+
+VITALS: BP 168/100, HR 82, RR 22, SpO2 94% RA, bilateral pitting oedema +++
+
+INVESTIGATIONS:
+Creatinine: 4.8 mg/dl (baseline 2.8 — significant AKI on CKD)
+BUN: 88 mg/dl
+Na: 134, K: 5.9 (hyperkalaemia)
+CBC: Hb 8.8 (anaemia of CKD)
+ECG: Peaked T waves (hyperkalaemia changes)
+Echo: EF 40%, mild pericardial effusion, bilateral pleural effusion
+CXR: Cardiomegaly, bilateral pleural effusions
+Urine output: 200ml/day
+
+DIAGNOSIS: AKI (KDIGO Stage 3) on CKD Stage 4, NSAID-induced. Hyperkalaemia. Fluid overload. Anaemia of CKD.
+
+HOSPITAL COURSE:
+Diclofenac immediately stopped. IV Calcium gluconate for hyperkalaemia, followed by insulin+dextrose. Sodium bicarbonate for acidosis. High-dose IV furosemide for fluid overload. Fluid restriction 1L/day. Ramipril held. Haemodialysis discussed — patient and family declined. K normalised over 48 hours. Creatinine peaked at 5.2 then trended down to 3.6 over 5 days. Urine output improved to 800ml/day. Haemoglobin stable.
+
+DISCHARGE MEDICATIONS:
+1. Torsemide 40mg OD (dose increased)
+2. Carvedilol 6.25mg BD
+3. Insulin Glargine 30 units SC night
+4. Insulin Regular 10 units SC TID
+5. Atorvastatin 40mg OD
+6. Aspirin 75mg OD
+7. Clopidogrel 75mg OD
+8. Sodium Bicarbonate 500mg TID
+9. Sevelamer 800mg TID (with meals — new, for phosphate control)
+
+NOTE: Ramipril HELD at discharge — to reassess at follow-up once creatinine further improves.
+NOTE: No NSAIDs — strict contraindication given CKD. Patient and family counselled.
+
+CONDITION: Improving, oedema reduced, urine output 800ml/day
+
+PENDING: 24-hour urine protein (sent, awaited)
+
+FOLLOW-UP:
+Nephrology in 3 days — urgent (renal function recheck).
+Cardiology in 2 weeks (EF 40%, pericardial effusion follow-up).
+Repeat ECG in 1 week.
+Daily weight monitoring at home.
+Return immediately if urine output drops or breathlessness worsens.

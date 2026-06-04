@@ -1,0 +1,55 @@
+ADMISSION NOTE
+Date: 10/03/2026
+Patient: John Harman, 45M, MRN: 100234
+Attending: Dr. Sarah Patel
+
+CHIEF COMPLAINT: Chest pain and shortness of breath x 2 days
+
+HISTORY: Patient presents with central chest pain radiating to left arm, onset 2 days ago. Associated with diaphoresis and mild dyspnea. No fever. No cough. No prior cardiac history. Smoker (20 pack-years). HTN on amlodipine.
+
+PAST HISTORY: Hypertension. Dyslipidemia.
+
+MEDICATIONS ON ADMISSION:
+1. Amlodipine 5mg OD
+2. Atorvastatin 20mg OD
+
+ALLERGIES: Penicillin (rash)
+
+PHYSICAL EXAM:
+BP: 145/90 mmHg, HR: 88 bpm, RR: 18/min, SpO2: 97% RA, Temp: 98.4F
+CVS: S1S2 heard, no murmurs
+RS: Clear bilaterally
+Abdomen: Soft, non-tender
+
+INVESTIGATIONS:
+ECG: ST depression in V4-V6
+Troponin I: 1.8 ng/mL (elevated)
+CK-MB: 22 U/L (elevated)
+CBC: Hb 13.2, TLC 9800, Platelets 210000
+Serum Creatinine: 0.9 mg/dl
+Serum Electrolytes: Na 138, K 4.1
+Echo: Mild LV dysfunction, EF 48%, hypokinesia of anterior wall
+Lipid profile: LDL 145, HDL 38, Triglycerides 210
+
+DIAGNOSIS: Non-ST Elevation Myocardial Infarction (NSTEMI)
+
+HOSPITAL COURSE:
+Patient admitted to CCU. Started on dual antiplatelet therapy (Aspirin 325mg + Clopidogrel 75mg), LMWH, IV nitrates, beta-blocker (Metoprolol 25mg BD). Troponin trending down after 24h. Echo performed showing anterior wall hypokinesia with EF 48%. Cardiology review done. Coronary angiography advised but patient declined. Patient stabilised over 3 days.
+
+DISCHARGE MEDICATIONS:
+1. Aspirin 75mg OD
+2. Clopidogrel 75mg OD
+3. Metoprolol 25mg BD
+4. Atorvastatin 40mg OD
+5. Amlodipine 5mg OD
+6. Pantoprazole 40mg OD (before food)
+7. Isosorbide mononitrate 30mg OD
+
+CONDITION AT DISCHARGE: Stable, ambulatory
+
+FOLLOW-UP:
+Cardiology OPD in 2 weeks.
+Repeat Echo in 4 weeks.
+Fasting lipid profile at follow-up.
+Advised smoking cessation.
+Review immediately if chest pain recurs.

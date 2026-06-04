@@ -1,0 +1,60 @@
+ADMISSION NOTE
+Date: 20/03/2026
+Patient: Maria Fernandez, 72F, MRN: 300789
+Attending: Dr. Anil Kumar
+
+CHIEF COMPLAINT: Fever, productive cough, breathlessness x 5 days
+
+HISTORY: Elderly female with multiple comorbidities. Cough with yellowish sputum. Breathlessness at rest. Fever up to 102F. No chest pain. Mild confusion noted by family.
+
+PAST HISTORY: Type 2 Diabetes, Hypertension, Hypothyroidism, Chronic Kidney Disease Stage 3, Osteoarthritis
+
+MEDICATIONS ON ADMISSION:
+1. Metformin 500mg BD
+2. Glimepiride 2mg OD
+3. Amlodipine 10mg OD
+4. Losartan 50mg OD
+5. Levothyroxine 75mcg OD
+6. Calcium + Vit D supplement OD
+7. Pantoprazole 40mg OD
+
+ALLERGIES: None known
+
+VITALS: BP 100/60, HR 104, RR 28, SpO2 88% RA, Temp 102.4F
+
+INVESTIGATIONS:
+CXR: Right lower lobe consolidation
+CBC: Hb 10.2, TLC 18400 (neutrophilia), Platelets 290000
+CRP: 142 mg/L (markedly elevated)
+Procalcitonin: 4.2 ng/mL
+Creatinine: 1.8 mg/dl (baseline 1.4)
+Na: 132, K: 3.8
+HbA1c: 9.2%
+TSH: 3.1 (normal)
+Blood cultures: sent, awaited
+Sputum C/S: sent, awaited
+
+DIAGNOSIS: Community Acquired Pneumonia (CAP) with Sepsis
+
+HOSPITAL COURSE:
+Patient admitted to HDU given SpO2 88%. Supplemental oxygen started (4L/min). IV Piperacillin-Tazobactam 4.5g TID initiated. IV fluids for hydration. Metformin held due to AKI. Glimepiride held. Glucose managed with insulin sliding scale. TSH normal, Levothyroxine continued. Patient improved over 4 days, SpO2 96% on room air by day 3. CRP trending down. Blood cultures: No growth (5 days). Sputum C/S: Streptococcus pneumoniae sensitive to amoxicillin. Stepped down to oral antibiotics.
+
+DISCHARGE MEDICATIONS:
+1. Amoxicillin-Clavulanate 625mg TID x 5 days
+2. Amlodipine 10mg OD
+3. Losartan 50mg OD
+4. Levothyroxine 75mcg OD
+5. Calcium + Vit D OD
+6. Pantoprazole 40mg OD
+7. Insulin (sliding scale - to be reviewed by endocrinologist)
+
+NOTE: Metformin and Glimepiride held at discharge pending nephrology review of CKD and AKI recovery.
+
+CONDITION: Improving, SpO2 96% room air
+
+FOLLOW-UP:
+Pulmonology in 2 weeks with repeat CXR.
+Nephrology in 1 week (renal function recovery + Metformin restart decision).
+Endocrinology in 2 weeks (diabetes management review).
+TSH repeat in 3 months.
+Return immediately if fever, breathlessness, or confusion worsens.

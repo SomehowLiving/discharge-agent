@@ -1,0 +1,124 @@
+{
+  "patient_id": "patient_9e10de7d",
+  "demographics": {
+    "age": null,
+    "sex": null,
+    "mrn": null,
+    "attending_physician": null,
+    "name": null
+  },
+  "admission_date": "26/02/2026",
+  "discharge_date": "02/03/2026",
+  "principal_diagnosis": "ACUTE GASTROENTERITIS WITH DEHYDRATION",
+  "secondary_diagnoses": [
+    "URINARY TRACT INFECTION",
+    "Grade-I fatty liver changes",
+    "Colitis",
+    "Cholelithiasis without cholecystitis",
+    "Mildly bulky bilateral kidneys",
+    "Minimal ascites",
+    "Minimal right pleural effusion with underlying subsegmental lung consolidation"
+  ],
+  "hospital_course": "Patient presented with complaints of multiple episodes of loose stools, 2-3 episodes of vomiting, fatigue for 3 days, and fever for one day. Initial investigations showed normal CBC, elevated serum creatinine (1.65mg/dl), and low serum sodium (128.00mmol/L). Urine routine showed ketone bodies(+), 10-12/hpf of pus cells, and 15-20/hpf of epithelial cells with bacteria. Urine culture and sensitivity was sent. The patient was treated with IV fluids, IV antibiotics, IV PPI's, and IV antiemetics. An USG of the abdomen and pelvis showed Grade-I fatty liver changes and colitis. Repeat serum creatinine was normal (1.17mg/dl). TSH and Free T4 were normal. Stool routine showed 2-3/hpf of red blood cells and plenty/hpf of pus cells. The patient was discharged at request against medical advice for further management.",
+  "procedures": [
+    "IV Cannulization",
+    "Foley's Catheterisation",
+    "USG Abdomen & Pelvis",
+    "CT KUB (PLAIN)"
+  ],
+  "admission_medications": [],
+  "discharge_medications": [
+    {
+      "duration": "7 DAYS",
+      "notes": "BEFORE FOOD",
+      "dose": "40MG",
+      "frequency": "1-0-0",
+      "medication_name": "TAB. RACIPER"
+    },
+    {
+      "duration": "3 DAYS",
+      "medication_name": "TAB. EMESET",
+      "notes": null,
+      "dose": "4MG",
+      "frequency": "1-1-1"
+    },
+    {
+      "medication_name": "TAB. OFLOX TZ",
+      "dose": null,
+      "frequency": "1-0-1",
+      "notes": null,
+      "duration": "5 DAYS"
+    },
+    {
+      "medication_name": "TAB M STRONG",
+      "notes": null,
+      "dose": null,
+      "frequency": "1-0-0",
+      "duration": "15 DAYS"
+    },
+    {
+      "medication_name": "TAB. ZEDOTT",
+      "notes": null,
+      "dose": null,
+      "frequency": "1-1-1",
+      "duration": "3 DAYS"
+    },
+    {
+      "duration": "3 DAYS",
+      "medication_name": "TAB. ENTRO",
+      "notes": null,
+      "dose": null,
+      "frequency": "1-0-1"
+    },
+    {
+      "medication_name": "TAB. MEFTAL SPAS",
+      "notes": null,
+      "dose": null,
+      "frequency": "1 TAB SOS",
+      "duration": "4 TABLETS"
+    },
+    {
+      "medication_name": "TAB. LOPIRAMIDE",
+      "dose": "2MG",
+      "frequency": "1-0-1",
+      "notes": null,
+      "duration": "5 DAYS"
+    }
+  ],
+  "medication_changes": [],
+  "allergies": [
+    "Not Known"
+  ],
+  "follow_up": "Urine culture and sensitivity sent- report awaited. Review immediately in case of fever, loose stools, vomiting, fatigue. Review on 09.03.2026. CBC",
+  "pending_results": [
+    "Urine culture and sensitivity"
+  ],
+  "discharge_condition": "Hemodynamically stable",
+  "flags": [
+    {
+      "section": "Diagnoses",
+      "issue": "The ER Observation Chart (page 3) and Admission Record (page 48) list DKA (Diabetic Ketoacidosis) / Uncontrolled T2DM as a diagnosis, with an initial blood glucose of 443 mg/dL. However, the final discharge summary (page 1) diagnoses Acute Gastroenteritis and UTI, and does not mention DKA or diabetes. This is a critical discrepancy.",
+      "severity": "critical"
+    },
+    {
+      "section": "Medications",
+      "issue": "The patient has a documented past history of a 'Thyroid disorder on treatment' (page 1). No thyroid medication is listed on the discharge medication list. It is unclear if this medication was intentionally stopped.",
+      "severity": "warning"
+    },
+    {
+      "section": "Follow-up Instructions",
+      "issue": "The discharge summary states 'urine culture and sensitivity sent- report awaited.'",
+      "severity": "info"
+    },
+    {
+      "section": "Patient Information",
+      "issue": "Patient demographic information such as name, age, sex, and MRN is not available in the provided documents. The admission date is documented as 26/02/2026, but the discharge date is not explicitly stated, only inferred from the last follow-up note date (02/03/2026).",
+      "severity": "warning"
+    },
+    {
+      "section": "Hospital Course",
+      "issue": "The discharge summary mentions an initial serum creatinine of 1.65mg/dl. However, lab reports show different values around the admission timeframe (e.g., 1.02 mg/dl and 1.04 mg/dl on page 6). This discrepancy needs clarification.",
+      "severity": "warning"
+    }
+  ]
+}

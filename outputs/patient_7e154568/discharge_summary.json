@@ -1,0 +1,122 @@
+{
+  "patient_id": "patient_7e154568",
+  "demographics": {
+    "attending_physician": null,
+    "age": null,
+    "sex": null,
+    "mrn": null,
+    "name": null
+  },
+  "admission_date": "2026-02-26",
+  "discharge_date": "2026-03-02",
+  "principal_diagnosis": "Acute Gastroenteritis with Dehydration",
+  "secondary_diagnoses": [
+    "Urinary Tract Infection",
+    "Grade-I fatty liver changes",
+    "Colitis",
+    "Cholelithiasis without cholecystitis",
+    "Mildly bulky bilateral kidneys",
+    "Minimal ascites",
+    "Minimal right pleural effusion"
+  ],
+  "hospital_course": "The patient presented with complaints of multiple episodes of loose stools, vomiting, fatigue for 3 days, and fever for one day. Initial investigations revealed elevated serum creatinine (1.65mg/dl), low serum sodium (128.00mmol/L), and a normal CBC. Urinalysis showed ketone bodies, pus cells, and bacteria. The patient was admitted and treated with IV fluids, IV antibiotics, IV PPI's, and IV antiemetics. An ultrasound of the abdomen and pelvis showed Grade-I fatty liver changes and features suggestive of colitis. Repeat serum creatinine was normal (1.17mg/dl). TSH and Free T4 were also normal. The patient was discharged at the request of family against medical advice for further management.",
+  "procedures": [
+    "IV Cannulization",
+    "Foley's Catheterisation",
+    "USG Abdomen & Pelvis",
+    "CT KUB (Plain)"
+  ],
+  "admission_medications": [
+    {
+      "note": "Patient has a history of a thyroid disorder and was on treatment. The specific medication is not named in the documents.",
+      "medication_name": "Thyroid medication"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "frequency": "1-0-0 (Before Food)",
+      "dose": "40MG",
+      "duration": "7 DAYS",
+      "medication_name": "TAB. RACIPER"
+    },
+    {
+      "dose": "4MG",
+      "duration": "3 DAYS",
+      "frequency": "1-1-1",
+      "medication_name": "TAB. EMESET"
+    },
+    {
+      "medication_name": "TAB. OFLOX TZ",
+      "dose": null,
+      "duration": "5 DAYS",
+      "frequency": "1-0-1"
+    },
+    {
+      "frequency": "1-0-0",
+      "dose": null,
+      "duration": "15 DAYS",
+      "medication_name": "TAB M STRONG"
+    },
+    {
+      "dose": null,
+      "duration": "3 DAYS",
+      "frequency": "1-1-1",
+      "medication_name": "TAB. ZEDOTT"
+    },
+    {
+      "medication_name": "TAB. ENTRO",
+      "frequency": "1-0-1",
+      "dose": null,
+      "duration": "3 DAYS"
+    },
+    {
+      "dose": "1 TAB",
+      "duration": "4 TABLETS",
+      "frequency": "SOS",
+      "medication_name": "TAB. MEFTAL SPAS"
+    },
+    {
+      "frequency": "1-0-1",
+      "dose": "2MG",
+      "duration": "5 DAYS",
+      "medication_name": "TAB. LOPIRAMIDE"
+    }
+  ],
+  "medication_changes": [
+    {
+      "reason": "Not documented.",
+      "change_type": "stopped",
+      "medication_name": "Thyroid Medication"
+    }
+  ],
+  "allergies": [
+    "Not Known"
+  ],
+  "follow_up": "Review immediately in case of fever, loose stools, vomiting, fatigue. Review on 09.03.2026. CBC. Follow up on pending urine culture and sensitivity report.",
+  "pending_results": [
+    "Urine culture and sensitivity"
+  ],
+  "discharge_condition": "Hemodynamically stable",
+  "flags": [
+    {
+      "section": "demographics",
+      "issue": "Patient demographics (name, age, sex, MRN) are not available in the provided documents.",
+      "severity": "warning"
+    },
+    {
+      "section": "principal_diagnosis",
+      "issue": "The ER Observation Chart lists 'DKA' as a diagnosis, but the discharge summary diagnoses are 'Acute Gastroenteritis with Dehydration' and 'Urinary Tract Infection'. This is a critical conflict.",
+      "severity": "critical"
+    },
+    {
+      "section": "medication_changes",
+      "issue": "Patient has a past history of a 'Thyroid disorder on treatment', but no thyroid medication is listed on the discharge medication list. TSH and Free T4 were normal during the hospital stay. The reason for stopping the medication is not documented.",
+      "severity": "warning"
+    },
+    {
+      "section": "pending_results",
+      "issue": "Report for 'Urine culture and sensitivity' is awaited.",
+      "severity": "info"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "run_at": "2026-06-04T03:05:22.789444",
+  "total_patients": 0,
+  "curve": [],
+  "before": null,
+  "after": null,
+  "improvement": 0,
+  "memory": {
+    "learned_rules": [],
+    "history": [],
+    "total_rules_learned": 0
+  }
+}

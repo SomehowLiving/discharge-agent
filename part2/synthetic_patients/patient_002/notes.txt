@@ -1,0 +1,63 @@
+EMERGENCY DEPARTMENT NOTE
+Date: 15/03/2026
+MRN: 200456
+
+DIAGNOSIS (ER): Diabetic Ketoacidosis (DKA)
+
+VITALS: BP 88/60, HR 118, RR 26, SpO2 94%, Blood Glucose 486 mg/dl, Temp 99.2F
+GCS: 14/15
+
+HISTORY: Known diabetic (Type 2, 8 years), on insulin. Missed doses for 3 days. Vomiting x 2 days, polyuria, lethargy.
+Brought by family in altered sensorium.
+
+INVESTIGATIONS:
+Blood Glucose: 486 mg/dl
+ABG: pH 7.21, HCO3 10, pCO2 22 (metabolic acidosis)
+Urine ketones: 3+
+Na: 128 (corrected), K: 5.8
+Creatinine: 2.1 mg/dl
+CBC: Hb 11.8, TLC 14200 (elevated)
+Urine C/S: sent, report awaited
+
+TREATMENT IN ER:
+IV Normal saline bolus 1L
+IV Insulin infusion started
+IV KCl replacement
+Foley catheter inserted
+
+---
+
+WARD PROGRESS NOTE
+Date: 16/03/2026
+Attending: Dr. Ramesh Nair
+
+Patient improving. Blood glucose 210 mg/dl. Acidosis resolving. pH 7.32.
+K normalising at 4.1.
+Creatinine improving to 1.4 mg/dl.
+Urine output adequate.
+Switched from IV to SC insulin.
+
+DIAGNOSIS (WARD): Acute on Chronic Kidney Disease secondary to Diabetic Nephropathy
+
+NOTE: ER diagnosis was DKA. Ward team now documents primary diagnosis as AKI secondary to DKA. Mild discrepancy in documentation.
+
+---
+
+DISCHARGE NOTE
+Date: 18/03/2026
+
+CONDITION: Hemodynamically stable, glucose controlled
+
+DISCHARGE MEDICATIONS:
+1. Insulin Glargine 20 units SC at night
+2. Insulin Regular 8 units SC before meals (TID)
+3. Metformin 500mg BD (held pending renal review)
+4. Pantoprazole 40mg OD
+
+PENDING: Urine C/S report awaited - patient advised to collect result from lab.
+
+FOLLOW-UP:
+Nephrology review in 1 week.
+Repeat creatinine and electrolytes in 3 days.
+Endocrinology in 2 weeks.
+Review immediately if vomiting, high glucose, or reduced urine output.

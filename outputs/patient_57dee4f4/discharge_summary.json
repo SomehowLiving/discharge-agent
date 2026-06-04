@@ -1,0 +1,175 @@
+{
+  "patient_id": "patient_57dee4f4",
+  "demographics": {
+    "age": null,
+    "name": null,
+    "attending_physician": null,
+    "sex": null,
+    "mrn": null
+  },
+  "admission_date": "2026-02-26",
+  "discharge_date": "2026-03-02",
+  "principal_diagnosis": "Acute Gastroenteritis with Dehydration",
+  "secondary_diagnoses": [
+    "Urinary Tract Infection",
+    "Thyroid disorder",
+    "Grade-I fatty liver changes",
+    "Colitis",
+    "Cholelithiasis without cholecystitis",
+    "Mildly bulky bilateral kidneys (suggestive of pyelonephritis)",
+    "Uncontrolled Type 2 Diabetes Mellitus"
+  ],
+  "hospital_course": "The patient presented with complaints of multiple episodes of loose stools, vomiting, fatigue, and fever. Initial evaluation revealed elevated serum creatinine (1.65mg/dl), hyponatremia (128.00mmol/L), and urinalysis showing ketone bodies, pus cells, and bacteria. The patient was treated for acute gastroenteritis, dehydration, and urinary tract infection with IV fluids, IV antibiotics, IV PPI's, and IV antiemetics. An ultrasound of the abdomen and pelvis showed Grade-I fatty liver changes and features suggestive of colitis. Repeat serum creatinine was normal (1.17mg/dl). TSH and Free T4 levels were normal. The patient was discharged at the request of family for further management.",
+  "procedures": [
+    "Ultrasound abdomen and pelvis"
+  ],
+  "admission_medications": [
+    {
+      "status": "active",
+      "reason_for_intake": "Thyroid disorder",
+      "drug": "Medication for Thyroid Disorder"
+    },
+    {
+      "status": "active",
+      "reason_for_intake": "Type 2 Diabetes Mellitus",
+      "drug": "Ayurvedic Medication"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "frequency": "1-0-0 (Before Food)",
+      "duration": "7 DAYS",
+      "drug": "TAB. RACIPER",
+      "dose": "40MG"
+    },
+    {
+      "dose": "4MG",
+      "frequency": "1-1-1",
+      "duration": "3 DAYS",
+      "drug": "TAB. EMESET"
+    },
+    {
+      "frequency": "1-0-1",
+      "duration": "5 DAYS",
+      "drug": "TAB. OFLOX TZ",
+      "dose": null
+    },
+    {
+      "frequency": "1-0-0",
+      "duration": "15 DAYS",
+      "drug": "TAB M STRONG",
+      "dose": null
+    },
+    {
+      "dose": null,
+      "frequency": "1-1-1",
+      "duration": "3 DAYS",
+      "drug": "TAB. ZEDOTT"
+    },
+    {
+      "frequency": "1-0-1",
+      "duration": "3 DAYS",
+      "drug": "TAB. ENTRO",
+      "dose": null
+    },
+    {
+      "frequency": "1 TAB SOS",
+      "duration": "4 TABLETS",
+      "drug": "TAB. MEFTAL SPAS",
+      "dose": null
+    },
+    {
+      "frequency": "1-0-1",
+      "duration": "5 DAYS",
+      "drug": "TAB. LOPIRAMIDE",
+      "dose": "2MG"
+    }
+  ],
+  "medication_changes": [
+    {
+      "action": "Stopped",
+      "drug": "Thyroid Medication",
+      "reason": "Not documented."
+    },
+    {
+      "action": "Stopped",
+      "drug": "Anti-diabetic Medication (Insulin was given in hospital)",
+      "reason": "Not documented."
+    },
+    {
+      "action": "Started",
+      "drug": "TAB. RACIPER",
+      "reason": "Gastroenteritis/Supportive care"
+    },
+    {
+      "reason": "Vomiting",
+      "action": "Started",
+      "drug": "TAB. EMESET"
+    },
+    {
+      "action": "Started",
+      "drug": "TAB. OFLOX TZ",
+      "reason": "Urinary Tract Infection/Gastroenteritis"
+    },
+    {
+      "reason": "Supportive care",
+      "action": "Started",
+      "drug": "TAB M STRONG"
+    },
+    {
+      "action": "Started",
+      "drug": "TAB. ZEDOTT",
+      "reason": "Diarrhea"
+    },
+    {
+      "reason": "Diarrhea",
+      "action": "Started",
+      "drug": "TAB. ENTRO"
+    },
+    {
+      "reason": "Pain/Spasms as needed",
+      "action": "Started",
+      "drug": "TAB. MEFTAL SPAS"
+    },
+    {
+      "action": "Started",
+      "drug": "TAB. LOPIRAMIDE",
+      "reason": "Diarrhea"
+    }
+  ],
+  "allergies": [
+    "Not Known"
+  ],
+  "follow_up": "Urine culture and sensitivity sent- report awaited. Review immediately in case of fever, loose stools, vomiting, fatigue. Review on 09.03.2026. CBC.",
+  "pending_results": [
+    "Urine culture and sensitivity"
+  ],
+  "discharge_condition": "Hemodynamically stable",
+  "flags": [
+    {
+      "section": "principal_diagnosis",
+      "issue": "The principal diagnosis on the typed discharge summary is 'Acute Gastroenteritis with Dehydration', but the ER Observation Chart lists 'DKA'. This is a significant conflict.",
+      "severity": "critical"
+    },
+    {
+      "section": "medication_changes",
+      "issue": "Patient with a history of Uncontrolled T2DM and severe hyperglycemia (Blood Glucose 443 mg/dL) during admission was treated with insulin in the hospital, but is being discharged with no anti-diabetic medication. This is a potential patient safety issue.",
+      "severity": "critical"
+    },
+    {
+      "section": "medication_changes",
+      "issue": "Patient has a past history of a 'Thyroid disorder on treatment', but no thyroid medication is included in the discharge list. TSH and Free T4 were normal during the stay. The reason for stopping the medication is not documented.",
+      "severity": "warning"
+    },
+    {
+      "section": "pending_results",
+      "issue": "The urine culture and sensitivity report is pending. Please follow up on this result to ensure appropriate antibiotic therapy.",
+      "severity": "info"
+    },
+    {
+      "section": "demographics",
+      "issue": "Patient demographic information (Name, Age, Sex, MRN) is not available in the provided documents.",
+      "severity": "warning"
+    }
+  ]
+}

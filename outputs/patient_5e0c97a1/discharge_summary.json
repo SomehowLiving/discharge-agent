@@ -1,0 +1,181 @@
+{
+  "patient_id": "patient_5e0c97a1",
+  "demographics": {
+    "name": null,
+    "sex": null,
+    "attending_physician": null,
+    "age": null,
+    "mrn": null
+  },
+  "admission_date": "2026-02-26",
+  "discharge_date": "2026-03-02",
+  "principal_diagnosis": "ACUTE GASTROENTERITIS WITH DEHYDRATION",
+  "secondary_diagnoses": [
+    "Urinary Tract Infection",
+    "Grade-I fatty liver changes",
+    "Colitis",
+    "Cholelithiasis without cholecystitis",
+    "Mildly bulky bilateral kidneys",
+    "Minimal ascites",
+    "Minimal right pleural effusion"
+  ],
+  "hospital_course": "The patient with a past history of a thyroid disorder and Type 2 Diabetes Mellitus presented with complaints of multiple episodes of loose stools, vomiting, fatigue for 3 days, and fever for one day. Initial investigations revealed elevated serum creatinine (1.65 mg/dl), low serum sodium (128.00 mmol/L), and a urine routine showing ketone bodies, pus cells, and bacteria. The patient was admitted and treated with IV fluids, IV antibiotics, IV PPIs, and IV antiemetics. Repeat serum creatinine improved to 1.17 mg/dl. TSH and Free T4 were normal. USG of the abdomen and pelvis showed Grade-I fatty liver changes, mildly edematous ascending colon suggestive of colitis, and cholelithiasis. The patient was advised to stay for further management but was discharged at the request of the attenders.",
+  "procedures": [
+    "IV Cannulization",
+    "Foley's Catheterisation",
+    "USG Abdomen & Pelvis",
+    "CT KUB (Plain)",
+    "ECG",
+    "Echocardiogram"
+  ],
+  "admission_medications": [
+    {
+      "medication": "Treatment for Thyroid disorder"
+    },
+    {
+      "medication": "Ayurvedic medication for T2DM"
+    }
+  ],
+  "discharge_medications": [
+    {
+      "medication": "TAB. RACIPER",
+      "frequency": "1-0-0 (before food)",
+      "duration": "7 DAYS",
+      "dose": "40MG"
+    },
+    {
+      "dose": "4MG",
+      "medication": "TAB. EMESET",
+      "frequency": "1-1-1",
+      "duration": "3 DAYS"
+    },
+    {
+      "dose": null,
+      "medication": "TAB. OFLOX TZ",
+      "frequency": "1-0-1",
+      "duration": "5 DAYS"
+    },
+    {
+      "dose": null,
+      "medication": "TAB M STRONG",
+      "frequency": "1-0-0",
+      "duration": "15 DAYS"
+    },
+    {
+      "medication": "TAB. ZEDOTT",
+      "frequency": "1-1-1",
+      "duration": "3 DAYS",
+      "dose": null
+    },
+    {
+      "dose": null,
+      "medication": "TAB. ENTRO",
+      "frequency": "1-0-1",
+      "duration": "3 DAYS"
+    },
+    {
+      "dose": null,
+      "medication": "TAB. MEFTAL SPAS",
+      "frequency": "1 TAB SOS",
+      "duration": "4 TABLETS"
+    },
+    {
+      "medication": "TAB. LOPIRAMIDE",
+      "frequency": "1-0-1",
+      "duration": "5 DAYS",
+      "dose": "2MG"
+    }
+  ],
+  "medication_changes": [
+    {
+      "change": "Stopped",
+      "reason": "Not documented",
+      "medication": "Treatment for Thyroid disorder"
+    },
+    {
+      "reason": "Not documented",
+      "medication": "Ayurvedic medication for T2DM",
+      "change": "Stopped"
+    },
+    {
+      "reason": "Symptomatic treatment",
+      "medication": "TAB. RACIPER",
+      "change": "Started"
+    },
+    {
+      "reason": "Symptomatic treatment",
+      "medication": "TAB. EMESET",
+      "change": "Started"
+    },
+    {
+      "reason": "Treatment for UTI/Gastroenteritis",
+      "medication": "TAB. OFLOX TZ",
+      "change": "Started"
+    },
+    {
+      "reason": "Supportive care",
+      "medication": "TAB M STRONG",
+      "change": "Started"
+    },
+    {
+      "change": "Started",
+      "reason": "Symptomatic treatment",
+      "medication": "TAB. ZEDOTT"
+    },
+    {
+      "reason": "Symptomatic treatment",
+      "medication": "TAB. ENTRO",
+      "change": "Started"
+    },
+    {
+      "reason": "Symptomatic treatment",
+      "medication": "TAB. MEFTAL SPAS",
+      "change": "Started"
+    },
+    {
+      "reason": "Symptomatic treatment",
+      "medication": "TAB. LOPIRAMIDE",
+      "change": "Started"
+    }
+  ],
+  "allergies": [
+    "Not Known"
+  ],
+  "follow_up": "Review immediately in case of fever, loose stools, vomiting, fatigue. Review on 09.03.2026. CBC. Urine culture and sensitivity sent- report awaited. Diet counselling done for strict diet modification, allow low oil foods, include fiber rich foods.",
+  "pending_results": [
+    "Urine culture and sensitivity report awaited (as per discharge summary text)."
+  ],
+  "discharge_condition": "Hemodynamically stable",
+  "flags": [
+    {
+      "section": "Diagnosis",
+      "issue": "The principal diagnosis is listed as 'Acute Gastroenteritis with Dehydration' on the summary. However, the ER chart (pg 3) documents 'DKA', and the CT KUB report (pg 41) suggests 'acute pyelonephritis'. Labs and ICU charts show a course more consistent with severe hyperglycemia/DKA and infection rather than simple gastroenteritis. This is a critical conflict.",
+      "severity": "critical"
+    },
+    {
+      "section": "Demographics",
+      "issue": "Patient demographics (Name, MRN, Age, Sex) and Attending Physician are not found in any of the provided documents.",
+      "severity": "warning"
+    },
+    {
+      "section": "Medications",
+      "issue": "The patient has a documented past history of a Thyroid disorder and Type 2 Diabetes Mellitus. No medications for these chronic conditions are included in the discharge medication list, and no reason for their discontinuation is documented.",
+      "severity": "critical"
+    },
+    {
+      "section": "Pending Results / Lab-Findings",
+      "issue": "The discharge summary (pg 1-2) and follow-up instructions (pg 2) state 'Urine culture and sensitivity sent- report awaited.' However, a lab report on page 41 shows a final result: 'NO SIGNIFICANT BACTERIURIA.' This is a conflict.",
+      "severity": "warning"
+    },
+    {
+      "section": "Medications",
+      "issue": "Medication 'TAB M STRONG' and 'TAB. ENTRO' are not standard drug names. Please verify the intended medication.",
+      "severity": "warning"
+    },
+    {
+      "section": "Administrative",
+      "issue": "Admission date is inferred from the Nursing Assessment on page 16 (26-2-26). Discharge date is inferred from nursing notes on page 22 (2/3/26). These should be confirmed.",
+      "severity": "info"
+    }
+  ]
+}
